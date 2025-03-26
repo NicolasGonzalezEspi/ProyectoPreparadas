@@ -1,0 +1,36 @@
+﻿<Window x:Class="trabajoFinalInterfaces.Main"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Main"  WindowState="Maximized">
+
+    <Grid>
+        <!-- Definir columnas con proporciones para secciones -->
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.6*" />
+            <!-- Sección izquierda (menú reducido al 15%) -->
+            <ColumnDefinition Width="4*" />
+            <!-- Sección derecha (contenido) -->
+        </Grid.ColumnDefinitions>
+
+        <!-- Panel con menú centrado dentro de su columna -->
+        <Grid Grid.Column="0" Background="#5DB85B">
+            <!-- Centrar los botones en la columna -->
+            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                <TextBlock TextWrapping="Wrap" Height="29" Width="113" Margin="17"
+                           TextAlignment="Center">
+                    <Run Language="es-es" Text="Grupo Solutia - Preparadas"/>
+                </TextBlock>
+                <Button Content="1-BBDDGlobal" Click="BtnInicio_Click" Margin="0, 15, 0, 30" Width="120"/>
+                <Button Content="2-Tabla Temporal" Click="BtnBorrar_Click" Margin="0, 15, 0, 0" Width="120"/>
+                <Button Content="3-TablaMarketplace" Click="BtnAgregar_Click" Margin="0, 15, 0, 0" Width="120"/>
+                <Button Content="4-Mkp-Exportar" Click="BtnModificar_Click" Margin="0, 15, 0, 0" Width="120"/>
+
+
+                <Button Content="Cerrar Sesión" Click="BtnLogout_Click" Margin="0, 30, 0, 0" Width="120"/>
+            </StackPanel>
+        </Grid>
+
+        <!-- Contenedor de páginas (Frame a la derecha) -->
+        <Frame x:Name="MainFrame" NavigationUIVisibility="Hidden" Grid.Column="1" Margin="0,0,0,0"/>
+    </Grid>
+</Window>

@@ -1,0 +1,63 @@
+﻿<Page x:Class="trabajoFinalInterfaces.Inicio"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      Title="Inicio">
+    <Grid Background="DarkSlateGray">
+
+        <!-- Texto "Northwind" en la parte superior izquierda -->
+        <TextBlock Text="BBDD_Global" 
+           FontSize="20" 
+           FontWeight="Bold" 
+           Foreground="White"
+           HorizontalAlignment="Left" 
+           VerticalAlignment="Top"
+           Margin="10,10,0,0" />
+
+        <DataGrid x:Name="dgProductos" 
+                  AutoGenerateColumns="False" 
+                  IsReadOnly="True"
+                  HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+                 Margin="10, 60, 35, 25">
+
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="categoriag" Binding="{Binding categoriag}" Width="*" />
+                <DataGridTextColumn Header="convocatoriag" Binding="{Binding convocatoriag}" Width="*" />
+                <DataGridTextColumn Header="codigo_convocatoriag" Binding="{Binding codigoconvocatoriag}" Width="*" />
+                <DataGridTextColumn Header="provinciag" Binding="{Binding provinciag}" Width="*" />
+                <DataGridTextColumn Header="localidadg" Binding="{Binding localidadg}" Width="*" />
+                <DataGridTextColumn Header="nombreg" Binding="{Binding nombreg}" Width="*" />
+                <DataGridTextColumn Header="apellidosg" Binding="{Binding apellidosg}" Width="*" />
+                <DataGridTextColumn Header="fecha_solicitudg" Binding="{Binding fechasolicitudg}" Width="*" />
+                <DataGridTextColumn Header="estado_inscripciong" Binding="{Binding estadoinscripciong}" Width="*" />
+                <DataGridTextColumn Header="tipo_inscripciong" Binding="{Binding tipoinscripciong}" Width="*" />
+                <DataGridTextColumn Header="estado_matriculaciong" Binding="{Binding estadomatriculaciong}" Width="*" />
+                <DataGridTextColumn Header="emailg" Binding="{Binding emailg}" Width="*" />
+                <DataGridTextColumn Header="telefonog" Binding="{Binding telefonog}" Width="*" />
+                <DataGridTextColumn Header="nivel_estudiosg" Binding="{Binding nivelestudiosg}" Width="*" />
+                <DataGridTextColumn Header="sexog" Binding="{Binding sexog}" Width="*" />
+                <DataGridTextColumn Header="fecha_nacimientog" Binding="{Binding fechanacimientog}" Width="*" />
+                <DataGridTextColumn Header="dnig" Binding="{Binding dnig}" Width="*" />
+                <DataGridTextColumn Header="situacion_laboralg" Binding="{Binding situacionlaboralg}" Width="*" />
+                <DataGridTextColumn Header="asistencia_remotag" Binding="{Binding asistenciaremotag}" Width="*" />
+                <DataGridTextColumn Header="tabletg" Binding="{Binding tabletg}" Width="*" />
+                <DataGridTextColumn Header="puntosg" Binding="{Binding puntosg}" Width="*" />
+                <DataGridTextColumn Header="fecha_importacion" Binding="{Binding fechaimportacion}" Width="*" />
+                <DataGridTextColumn Header="observaciones" Binding="{Binding observaciones}" Width="*" />
+
+            </DataGrid.Columns>
+            
+        </DataGrid>
+        
+        <Button Content="DNI" HorizontalAlignment="Left" Margin="222,28,0,0" VerticalAlignment="Top" Click="Button_Click"/>
+        <TextBlock Text="Filtrar por:" 
+            FontSize="16" Foreground="White"
+            HorizontalAlignment="Left" Margin="141,27,0,0"
+            VerticalAlignment="Top"/>
+        <Button Content="Email" HorizontalAlignment="Left" Margin="261,29,0,0" VerticalAlignment="Top" Click="Button_Click_1"/>
+        <Button Content="Añadir Observación" HorizontalAlignment="Left" Margin="337,29,0,0" VerticalAlignment="Top" Click="Button_Click_2"/>
+        <Button Content="Exportar Backup" HorizontalAlignment="Left" Margin="261,91,0,0" VerticalAlignment="Bottom" Click="ExportarBackup"/>
+        <Button Content="Importar Backup" HorizontalAlignment="Left" Margin="377,91,0,0" VerticalAlignment="Bottom" Click="ImportarBackup"/>
+        <Button Content="Ver Cádiz" HorizontalAlignment="Left" Margin="457,29,0,0" VerticalAlignment="Top" Click="FiltrarCadiz"/>
+
+    </Grid>
+</Page>

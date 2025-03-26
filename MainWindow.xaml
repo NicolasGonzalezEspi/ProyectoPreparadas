@@ -1,0 +1,43 @@
+﻿<Window x:Class="trabajoFinalInterfaces.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:trabajoFinalInterfaces"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800" Background="#2C2C2C"
+        FontFamily="Resources/Fonts/#Inter">
+    <Grid>
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,40,0,0" Orientation="Vertical">
+        
+        </StackPanel>
+
+        <TextBlock Text="Usuario" Foreground="#5DB85B" HorizontalAlignment="Left" Margin="302,191,0,-84" FontWeight="Bold" FontSize="14"/>
+        <TextBox x:Name="txtNombre" HorizontalAlignment="Left" Margin="302,223,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="181" Background="Transparent" Foreground="White" BorderThickness="0,0,0,1" BorderBrush="#808080"/>
+
+        <TextBlock Text="Contraseña" Foreground="#5DB85B" HorizontalAlignment="Left" Margin="302,261,0,-84" FontWeight="Bold" FontSize="14"/>
+        <PasswordBox x:Name="txtContraseña" HorizontalAlignment="Left" Margin="300,290,0,0" VerticalAlignment="Top" Width="183" Background="Transparent" Foreground="White" BorderThickness="0,0,0,1" BorderBrush="#808080"/>
+
+        <Button Content="Entrar" FontWeight="Bold" HorizontalAlignment="Left" Margin="339,355,0,0" VerticalAlignment="Top" Click="MostrarUsuarios" Foreground="#2C2C2C" Height="33" Width="104">
+            <Button.Style>
+                <Style TargetType="Button">
+                    <Setter Property="Background" Value="#5DB85B"/>
+                    <Setter Property="Foreground" Value="#2C2C2C"/>
+                    <Setter Property="Padding" Value="10"/>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="Button">
+                                <Border Background="{TemplateBinding Background}" CornerRadius="10" Padding="{TemplateBinding Padding}">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </Button.Style>
+        </Button>
+        <TextBlock Text="   Marketplace" Foreground="#5DB85B" FontSize="50" FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="190,53,0,0" />
+        <Image Margin="534,40,193,321" Source="pack://siteoforigin:,,,/db.png" Stretch="Fill"/>
+
+    </Grid>
+</Window>
