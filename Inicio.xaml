@@ -2,6 +2,16 @@
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       Title="Inicio">
+
+    <Page.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <!-- Fusionar el diccionario de recursos que contiene los estilos -->
+                <ResourceDictionary Source="Dictionary1.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Page.Resources>
+
     <Grid Background="DarkSlateGray">
 
         <!-- Texto "Northwind" en la parte superior izquierda -->
@@ -45,19 +55,139 @@
                 <DataGridTextColumn Header="observaciones" Binding="{Binding observaciones}" Width="*" />
 
             </DataGrid.Columns>
-            
+
         </DataGrid>
-        
-        <Button Content="DNI" HorizontalAlignment="Left" Margin="222,28,0,0" VerticalAlignment="Top" Click="Button_Click"/>
         <TextBlock Text="Filtrar por:" 
             FontSize="16" Foreground="White"
-            HorizontalAlignment="Left" Margin="141,27,0,0"
+            HorizontalAlignment="Left" Margin="155,31,0,0"
             VerticalAlignment="Top"/>
-        <Button Content="Email" HorizontalAlignment="Left" Margin="261,29,0,0" VerticalAlignment="Top" Click="Button_Click_1"/>
-        <Button Content="Añadir Observación" HorizontalAlignment="Left" Margin="337,29,0,0" VerticalAlignment="Top" Click="Button_Click_2"/>
-        <Button Content="Exportar Backup" HorizontalAlignment="Left" Margin="261,91,0,0" VerticalAlignment="Bottom" Click="ExportarBackup"/>
-        <Button Content="Importar Backup" HorizontalAlignment="Left" Margin="377,91,0,0" VerticalAlignment="Bottom" Click="ImportarBackup"/>
-        <Button Content="Ver Cádiz" HorizontalAlignment="Left" Margin="457,29,0,0" VerticalAlignment="Top" Click="FiltrarCadiz"/>
+        <Button Style="{StaticResource PageButtonStyle1}" Content="DNI" HorizontalAlignment="Left" Margin="238,28,0,0" VerticalAlignment="Top" Click="Button_Click"/>
+
+        <Button Style="{StaticResource PageButtonStyle1}" Content="Email" HorizontalAlignment="Left" Margin="277,28,0,0" VerticalAlignment="Top" Click="Button_Click_1"/>
+    
+        <Button Style="{StaticResource PageButtonStyle1}" Content="Ver Cádiz" HorizontalAlignment="Left" Margin="350,28,0,0" VerticalAlignment="Top" Click="FiltrarCadiz"/>
+        <Button Style="{StaticResource PageButtonStyle1}" Content="Ver Málaga" HorizontalAlignment="Left" Margin="424,28,0,0" VerticalAlignment="Top" Click="FiltrarMalaga"/>
+        <Button Style="{StaticResource PageButtonStyle1}" Content="Añadir Observación" HorizontalAlignment="Left" Margin="531,28,0,0" VerticalAlignment="Top" Click="Button_Click_2"/>
+        <ComboBox x:Name="cmbEstado"
+           HorizontalAlignment="Left" 
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+           VerticalAlignment="Top"
+           Margin="670,28,0,0"
+           SelectionChanged="cmbEstado_SelectionChanged">
+            <ComboBoxItem>Procesando</ComboBoxItem>
+            <ComboBoxItem>Gestionando</ComboBoxItem>
+            <ComboBoxItem>Completado</ComboBoxItem>
+        </ComboBox>
+
+        <Button Style="{StaticResource PageButtonStyle1}" Content="Exportar Backup" HorizontalAlignment="Left" Margin="261,91,0,0" VerticalAlignment="Bottom" Click="ExportarBackup"/>
+        <Button Style="{StaticResource PageButtonStyle1}" Content="Importar Backup" HorizontalAlignment="Left" Margin="377,91,0,0" VerticalAlignment="Bottom" Click="ImportarBackup"/>
+  
 
     </Grid>
 </Page>

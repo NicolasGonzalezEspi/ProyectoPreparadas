@@ -350,6 +350,103 @@ namespace trabajoFinalInterfaces
             return tabla;
         }
 
+        public static DataTable MostrarBBDDGlobalFiltroCadiz()
+        {
+            string consulta = @"
+                SELECT 
+                    categoriag AS 'categoriag', 
+                    convocatoriag AS 'convocatoriag', 
+                    codigo_convocatoriag AS 'codigoconvocatoriag', 
+                    provinciag AS 'provinciag', 
+                    localidadg AS 'localidadg', 
+                    nombreg AS 'nombreg', 
+                    apellidosg AS 'apellidosg', 
+                    fecha_solicitudg AS 'fechasolicitudg', 
+                    estado_inscripciong AS 'estadoinscripciong', 
+                    tipo_inscripciong AS 'tipoinscripciong', 
+                    estado_matriculaciong AS 'estadomatriculaciong', 
+                    emailg AS 'emailg', 
+                    telefonog AS 'telefonog', 
+                    nivel_estudiosg AS 'nivelestudiosg', 
+                    sexog AS 'sexog', 
+                    fecha_nacimientog AS 'fechanacimientog', 
+                    dnig AS 'dnig', 
+                    situacion_laboralg AS 'situacionlaboralg', 
+                    asistencia_remotag AS 'asistenciaremotag', 
+                    tabletg AS 'tabletg',
+                    puntosg AS 'puntosg',
+                    fecha_importacion AS 'fechaimportacion', 
+                    observaciones AS 'observaciones'
+                FROM bbddglobal 
+                WHERE provinciag = 'Cadiz';";
+
+            DataTable tabla = new DataTable();
+
+            if (conexion == null || conexion.State != ConnectionState.Open)
+            {
+                if (!Conectar()) return tabla;
+            }
+
+            using (MySqlCommand cmd = new MySqlCommand(consulta, conexion))
+            {
+
+                using (MySqlDataAdapter adaptador = new MySqlDataAdapter(cmd))
+                {
+                    adaptador.Fill(tabla);
+                }
+            }
+
+            return tabla;
+        }
+        public static DataTable MostrarBBDDGlobalFiltroMalaga()
+        {
+            string consulta = @"
+                SELECT 
+                    categoriag AS 'categoriag', 
+                    convocatoriag AS 'convocatoriag', 
+                    codigo_convocatoriag AS 'codigoconvocatoriag', 
+                    provinciag AS 'provinciag', 
+                    localidadg AS 'localidadg', 
+                    nombreg AS 'nombreg', 
+                    apellidosg AS 'apellidosg', 
+                    fecha_solicitudg AS 'fechasolicitudg', 
+                    estado_inscripciong AS 'estadoinscripciong', 
+                    tipo_inscripciong AS 'tipoinscripciong', 
+                    estado_matriculaciong AS 'estadomatriculaciong', 
+                    emailg AS 'emailg', 
+                    telefonog AS 'telefonog', 
+                    nivel_estudiosg AS 'nivelestudiosg', 
+                    sexog AS 'sexog', 
+                    fecha_nacimientog AS 'fechanacimientog', 
+                    dnig AS 'dnig', 
+                    situacion_laboralg AS 'situacionlaboralg', 
+                    asistencia_remotag AS 'asistenciaremotag', 
+                    tabletg AS 'tabletg',
+                    puntosg AS 'puntosg',
+                    fecha_importacion AS 'fechaimportacion', 
+                    observaciones AS 'observaciones'
+                FROM bbddglobal 
+                WHERE provinciag = 'Málaga';";
+
+            DataTable tabla = new DataTable();
+
+            if (conexion == null || conexion.State != ConnectionState.Open)
+            {
+                if (!Conectar()) return tabla;
+            }
+
+            using (MySqlCommand cmd = new MySqlCommand(consulta, conexion))
+            {
+
+                using (MySqlDataAdapter adaptador = new MySqlDataAdapter(cmd))
+                {
+                    adaptador.Fill(tabla);
+                }
+            }
+
+            return tabla;
+        }
+
         public static DataTable MostrarBBDDGlobalFiltroEmail(string email)
         {
             string consulta = @"
@@ -629,19 +726,23 @@ namespace trabajoFinalInterfaces
                 if (!Conectar()) return false;
             }
 
-            string consulta = @"INSERT INTO tablamkp 
-    (user_login, user_email, user_nicename, first_name, last_name, Telefono, account_funds) 
-    VALUES (@user_login, @user_email, @user_nicename, @first_name, @last_name, @Telefono, @account_funds) 
-    ON DUPLICATE KEY UPDATE 
-    user_email = VALUES(user_email), 
-    user_nicename = VALUES(user_nicename), 
-    first_name = VALUES(first_name), 
-    last_name = VALUES(last_name), 
-    Telefono = VALUES(Telefono), 
-    account_funds = VALUES(account_funds);";
-
-            using (MySqlCommand cmd = new MySqlCommand(consulta, conexion))
+            using (MySqlTransaction transaccion = conexion.BeginTransaction())
+            using (MySqlCommand cmd = new MySqlCommand())
             {
+                cmd.Connection = conexion;
+                cmd.Transaction = transaccion;
+
+                cmd.CommandText = @"INSERT INTO tablamkp 
+        (user_login, user_email, user_nicename, first_name, last_name, Telefono, account_funds) 
+        VALUES (@user_login, @user_email, @user_nicename, @first_name, @last_name, @Telefono, @account_funds) 
+        ON DUPLICATE KEY UPDATE 
+        user_email = VALUES(user_email), 
+        user_nicename = VALUES(user_nicename), 
+        first_name = VALUES(first_name), 
+        last_name = VALUES(last_name), 
+        Telefono = VALUES(Telefono), 
+        account_funds = VALUES(account_funds);";
+
                 cmd.Parameters.Add("@user_login", MySqlDbType.VarChar);
                 cmd.Parameters.Add("@user_email", MySqlDbType.VarChar);
                 cmd.Parameters.Add("@user_nicename", MySqlDbType.VarChar);
@@ -650,24 +751,37 @@ namespace trabajoFinalInterfaces
                 cmd.Parameters.Add("@Telefono", MySqlDbType.VarChar);
                 cmd.Parameters.Add("@account_funds", MySqlDbType.Int32);
 
-                int filasInsertadas = 0;
-
-                foreach (DataRow fila in datos.Rows)
+                try
                 {
-                    cmd.Parameters["@user_login"].Value = fila["user_login"];
-                    cmd.Parameters["@user_email"].Value = fila["user_email"];
-                    cmd.Parameters["@user_nicename"].Value = fila["user_nicename"];
-                    cmd.Parameters["@first_name"].Value = fila["first_name"];
-                    cmd.Parameters["@last_name"].Value = fila["last_name"];
-                    cmd.Parameters["@Telefono"].Value = fila["Telefono"];
-                    cmd.Parameters["@account_funds"].Value = fila["account_funds"];
+                    int filasInsertadas = 0;
 
-                    filasInsertadas += cmd.ExecuteNonQuery();
+                    foreach (DataRow fila in datos.Rows)
+                    {
+                        cmd.Parameters["@user_login"].Value = fila["user_login"];
+                        cmd.Parameters["@user_email"].Value = fila["user_email"];
+                        cmd.Parameters["@user_nicename"].Value = fila["user_nicename"];
+                        cmd.Parameters["@first_name"].Value = fila["first_name"];
+                        cmd.Parameters["@last_name"].Value = fila["last_name"];
+                        cmd.Parameters["@Telefono"].Value = fila["Telefono"];
+                        cmd.Parameters["@account_funds"].Value = fila["account_funds"];
+
+                        filasInsertadas += cmd.ExecuteNonQuery();
+                    }
+
+                    // Si todo se insertó correctamente, confirmamos la transacción
+                    transaccion.Commit();
+                    return filasInsertadas > 0;
                 }
-
-                return filasInsertadas > 0;
+                catch (Exception ex)
+                {
+                    // Si hay un error, revertimos la transacción
+                    transaccion.Rollback();
+                    MessageBox.Show($"Error al insertar datos: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    return false;
+                }
             }
         }
+
 
         public static bool InsertarDatosCSVBackup(DataTable datos)
         {
@@ -676,40 +790,159 @@ namespace trabajoFinalInterfaces
                 if (!Conectar()) return false;
             }
 
-            string consulta = @"INSERT INTO bbddglobal 
-(categoriag, convocatoriag, codigo_convocatoriag, provinciag, localidadg, nombreg, apellidosg, fecha_solicitudg, estado_inscripciong, tipo_inscripciong, estado_matriculaciong, emailg, telefonog, nivel_estudiosg, sexog, fecha_nacimientog, dnig, situacion_laboralg, asistencia_remotag, tabletg, puntosg, fecha_importacion, observaciones) 
-VALUES (@categoriag, @convocatoriag, @codigo_convocatoriag, @provinciag, @localidadg, @nombreg, @apellidosg, @fecha_solicitudg, @estado_inscripciong, @tipo_inscripciong, @estado_matriculaciong, @emailg, @telefonog, @nivel_estudiosg, @sexog, @fecha_nacimientog, @dnig, @situacion_laboralg, @asistencia_remotag, @tabletg, @puntosg, @fecha_importacion, @observaciones) 
-ON DUPLICATE KEY UPDATE 
-nombreg = VALUES(nombreg), 
-apellidosg = VALUES(apellidosg), 
-emailg = VALUES(emailg), 
-telefonog = VALUES(telefonog), 
-estado_inscripciong = VALUES(estado_inscripciong), 
+            string consulta = @"INSERT INTO bbddglobal
+(categoriag, convocatoriag, codigo_convocatoriag, provinciag, localidadg, nombreg, apellidosg, fecha_solicitudg, estado_inscripciong, tipo_inscripciong, estado_matriculaciong, emailg, telefonog, nivel_estudiosg, sexog, fecha_nacimientog, dnig, situacion_laboralg, asistencia_remotag, tabletg, puntosg, fecha_importacion, observaciones)
+VALUES (@categoriag, @convocatoriag, @codigo_convocatoriag, @provinciag, @localidadg, @nombreg, @apellidosg, @fecha_solicitudg, @estado_inscripciong, @tipo_inscripciong, @estado_matriculaciong, @emailg, @telefonog, @nivel_estudiosg, @sexog, @fecha_nacimientog, @dnig, @situacion_laboralg, @asistencia_remotag, @tabletg, @puntosg, @fecha_importacion, @observaciones)
+ON DUPLICATE KEY UPDATE
+categoriag = VALUES(categoriag),
+convocatoriag = VALUES(convocatoriag),
+provinciag = VALUES(provinciag),
+localidadg = VALUES(localidadg),
+nombreg = VALUES(nombreg),
+apellidosg = VALUES(apellidosg),
+fecha_solicitudg = VALUES(fecha_solicitudg),
+estado_inscripciong = VALUES(estado_inscripciong),
+tipo_inscripciong = VALUES(tipo_inscripciong),
+estado_matriculaciong = VALUES(estado_matriculaciong),
+emailg = VALUES(emailg),
+telefonog = VALUES(telefonog),
+nivel_estudiosg = VALUES(nivel_estudiosg),
+sexog = VALUES(sexog),
+fecha_nacimientog = VALUES(fecha_nacimientog),
+situacion_laboralg = VALUES(situacion_laboralg),
+asistencia_remotag = VALUES(asistencia_remotag),
+tabletg = VALUES(tabletg),
+puntosg = VALUES(puntosg),
+fecha_importacion = VALUES(fecha_importacion),
 observaciones = VALUES(observaciones);";
 
             using (MySqlCommand cmd = new MySqlCommand(consulta, conexion))
             {
                 foreach (DataColumn col in datos.Columns)
                 {
-                    cmd.Parameters.Add($"@{col.ColumnName}", MySqlDbType.VarChar);
+                    cmd.Parameters.Add($"@{col.ColumnName}", GetMySqlDbType(col.DataType));
                 }
 
                 int filasInsertadas = 0;
-
                 foreach (DataRow fila in datos.Rows)
                 {
                     foreach (DataColumn col in datos.Columns)
                     {
-                        cmd.Parameters[$"@{col.ColumnName}"].Value = fila[col.ColumnName];
+                        cmd.Parameters[$"@{col.ColumnName}"].Value = fila[col.ColumnName] ?? DBNull.Value;
                     }
                     filasInsertadas += cmd.ExecuteNonQuery();
                 }
-
                 return filasInsertadas > 0;
             }
         }
-
+        private static MySqlDbType GetMySqlDbType(Type type)
+        {
+            if (type == typeof(string)) return MySqlDbType.VarChar;
+            if (type == typeof(int)) return MySqlDbType.Int32;
+            // Añade más tipos según sea necesario
+            return MySqlDbType.VarChar; // Tipo por defecto
+        }
         public static bool InsertarDatosCSV(DataTable datos)
+        {
+            if (conexion == null || conexion.State != ConnectionState.Open)
+            {
+                if (!Conectar()) return false;
+            }
+
+            using (MySqlTransaction transaccion = conexion.BeginTransaction())  // Iniciar transacción
+            using (MySqlCommand cmd = new MySqlCommand())
+            {
+                cmd.Connection = conexion;
+                cmd.Transaction = transaccion;
+
+                string consulta = @"INSERT INTO tablaTemporal 
+        (categoria, convocatoria, codigo_convocatoria, provincia, localidad, nombre, apellidos, 
+        fecha_solicitud, estado_inscripcion, tipo_inscripcion, estado_matriculacion, email, telefono, 
+        nivel_estudios, sexo, fecha_nacimiento, dni, situacion_laboral, asistencia_remota, tablet, puntos) 
+        VALUES (@categoria, @convocatoria, @codigo_convocatoria, @provincia, @localidad, @nombre, @apellidos, 
+        @fecha_solicitud, @estado_inscripcion, @tipo_inscripcion, @estado_matriculacion, @email, @telefono, 
+        @nivel_estudios, @sexo, @fecha_nacimiento, @dni, @situacion_laboral, @asistencia_remota, @tablet, @puntos)
+        ON DUPLICATE KEY UPDATE 
+        categoria = VALUES(categoria), convocatoria = VALUES(convocatoria), provincia = VALUES(provincia),
+        localidad = VALUES(localidad), nombre = VALUES(nombre), apellidos = VALUES(apellidos), 
+        fecha_solicitud = VALUES(fecha_solicitud), estado_inscripcion = VALUES(estado_inscripcion), 
+        tipo_inscripcion = VALUES(tipo_inscripcion), estado_matriculacion = VALUES(estado_matriculacion), 
+        email = VALUES(email), telefono = VALUES(telefono), nivel_estudios = VALUES(nivel_estudios), 
+        sexo = VALUES(sexo), fecha_nacimiento = VALUES(fecha_nacimiento), dni = VALUES(dni), 
+        situacion_laboral = VALUES(situacion_laboral), asistencia_remota = VALUES(asistencia_remota), 
+        tablet = VALUES(tablet), puntos = VALUES(puntos);";
+
+                cmd.CommandText = consulta;
+
+                // Agregar parámetros
+                cmd.Parameters.Add("@categoria", MySqlDbType.VarChar);
+                cmd.Parameters.Add("@convocatoria", MySqlDbType.VarChar);
+                cmd.Parameters.Add("@codigo_convocatoria", MySqlDbType.VarChar);
+                cmd.Parameters.Add("@provincia", MySqlDbType.VarChar);
+                cmd.Parameters.Add("@localidad", MySqlDbType.VarChar);
+                cmd.Parameters.Add("@nombre", MySqlDbType.VarChar);
+                cmd.Parameters.Add("@apellidos", MySqlDbType.VarChar);
+                cmd.Parameters.Add("@fecha_solicitud", MySqlDbType.VarChar);
+                cmd.Parameters.Add("@estado_inscripcion", MySqlDbType.VarChar);
+                cmd.Parameters.Add("@tipo_inscripcion", MySqlDbType.VarChar);
+                cmd.Parameters.Add("@estado_matriculacion", MySqlDbType.VarChar);
+                cmd.Parameters.Add("@email", MySqlDbType.VarChar);
+                cmd.Parameters.Add("@telefono", MySqlDbType.VarChar);
+                cmd.Parameters.Add("@nivel_estudios", MySqlDbType.VarChar);
+                cmd.Parameters.Add("@sexo", MySqlDbType.VarChar);
+                cmd.Parameters.Add("@fecha_nacimiento", MySqlDbType.VarChar);
+                cmd.Parameters.Add("@dni", MySqlDbType.VarChar);
+                cmd.Parameters.Add("@situacion_laboral", MySqlDbType.VarChar);
+                cmd.Parameters.Add("@asistencia_remota", MySqlDbType.VarChar);
+                cmd.Parameters.Add("@tablet", MySqlDbType.VarChar);
+                cmd.Parameters.Add("@puntos", MySqlDbType.Int32);
+
+                try
+                {
+                    int filasInsertadas = 0;
+
+                    foreach (DataRow fila in datos.Rows)
+                    {
+                        cmd.Parameters["@categoria"].Value = fila["categoria"];
+                        cmd.Parameters["@convocatoria"].Value = fila["convocatoria"];
+                        cmd.Parameters["@codigo_convocatoria"].Value = fila["codigo_convocatoria"];
+                        cmd.Parameters["@provincia"].Value = fila["provincia"];
+                        cmd.Parameters["@localidad"].Value = fila["localidad"];
+                        cmd.Parameters["@nombre"].Value = fila["nombre"];
+                        cmd.Parameters["@apellidos"].Value = fila["apellidos"];
+                        cmd.Parameters["@fecha_solicitud"].Value = fila["fecha_solicitud"];
+                        cmd.Parameters["@estado_inscripcion"].Value = fila["estado_inscripcion"];
+                        cmd.Parameters["@tipo_inscripcion"].Value = fila["tipo_inscripcion"];
+                        cmd.Parameters["@estado_matriculacion"].Value = fila["estado_matriculacion"];
+                        cmd.Parameters["@email"].Value = fila["email"];
+                        cmd.Parameters["@telefono"].Value = fila["telefono"];
+                        cmd.Parameters["@nivel_estudios"].Value = fila["nivel_estudios"];
+                        cmd.Parameters["@sexo"].Value = fila["sexo"];
+                        cmd.Parameters["@fecha_nacimiento"].Value = fila["fecha_nacimiento"];
+                        cmd.Parameters["@dni"].Value = fila["dni"];
+                        cmd.Parameters["@situacion_laboral"].Value = fila["situacion_laboral"];
+                        cmd.Parameters["@asistencia_remota"].Value = fila["asistencia_remota"];
+                        cmd.Parameters["@tablet"].Value = fila["tablet"];
+                        cmd.Parameters["@puntos"].Value = fila["puntos"];
+
+                        filasInsertadas += cmd.ExecuteNonQuery();
+                    }
+
+                    // Si todo fue bien, confirmamos la transacción
+                    transaccion.Commit();
+                    return filasInsertadas > 0;
+                }
+                catch (Exception ex)
+                {
+                    transaccion.Rollback();  // Si hay error, deshacer todo
+                    MessageBox.Show($"Error al insertar datos, no se añadieron registros: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    return false;
+                }
+            }
+        }
+
+
+        public static bool InsertarDatosCSVbisbis(DataTable datos)
         {
             if (conexion == null || conexion.State != ConnectionState.Open)
             {
