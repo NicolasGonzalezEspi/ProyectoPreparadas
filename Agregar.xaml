@@ -3,18 +3,28 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       Title="Agregar">
 
-    <Grid Background="DarkSlateGray">
+    <Page.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <!-- Fusionar el diccionario de recursos que contiene los estilos -->
+                <ResourceDictionary Source="Dictionary1.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Page.Resources>
+    <Grid Background="#34485e" >
 
-        <TextBlock Text="Tabla Marketplace" 
+        <TextBlock Text="Formato Marketplace" 
                    FontSize="20" FontWeight="Bold" Foreground="White"
                    HorizontalAlignment="Left" VerticalAlignment="Top"
                    Margin="10,10,0,0"/>
 
 
-        <DataGrid x:Name="dgProductos" 
+        <DataGrid x:Name="dgProductos"  Style="{StaticResource CustomDataGridStyle}" 
                   AutoGenerateColumns="False" 
                   IsReadOnly="True"
-                  Margin="30,61,33,20">
+                  Margin="20, 65, 20, 20"
+                 
+                  >
 
             <DataGrid.Columns>
                 <DataGridTextColumn Header="user_login" Binding="{Binding userlogin}" Width="*" />
@@ -27,8 +37,10 @@
             </DataGrid.Columns>
         </DataGrid>
         <Button Content="Exportar a CSV (deprecado)" HorizontalAlignment="Left" Margin="215,17,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.205,-0.024" Click="ExportarCSV" Visibility="Collapsed" Background="CornflowerBlue" Width="158" Height="20"/>
-        <Button Content="¿Unir datos para prepararlos a la exportación?"  HorizontalAlignment="Left" Margin="238,39,0,0" VerticalAlignment="Top" Click="UnirYSumarDatos"/>
-        <Button Content="Importar estado actual Marketplace " Background="CornflowerBlue" HorizontalAlignment="Left" Margin="28,39,0,0" VerticalAlignment="Top" Click="BtnSeleccionarArchivoCSVClickBis"/>
+
+        <Button Style="{StaticResource PageButtonStyle2}"  Content="1. Importar Saldos MKP (CSV) " ToolTip="Importar el estado actual del MKP: Usuarias y puntos" HorizontalAlignment="Left" Margin="241,21,0,0" VerticalAlignment="Top" Click="BtnSeleccionarArchivoCSVClickBis" Height="30" Width="211"/>
+
+        <Button Style="{StaticResource PageButtonStyle1}"  Content="2. Totalizar Saldos"  ToolTip="A igual DNI, se obtiene el saldo actual sumándolo a las nuevas convocatorias. Los datos se volcarán a Importar Marketplace" HorizontalAlignment="Left" Margin="474,21,0,0" VerticalAlignment="Top" Click="UnirYSumarDatos" Width="187" Height="30"/>
 
     </Grid>
 </Page>

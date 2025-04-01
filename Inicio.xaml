@@ -12,23 +12,21 @@
         </ResourceDictionary>
     </Page.Resources>
 
-    <Grid Background="DarkSlateGray">
+    <Grid Background="#34485e">
 
         <!-- Texto "Northwind" en la parte superior izquierda -->
-        <TextBlock Text="BBDD_Global" 
-           FontSize="20" 
-           FontWeight="Bold" 
-           Foreground="White"
-           HorizontalAlignment="Left" 
-           VerticalAlignment="Top"
-           Margin="10,10,0,0" />
+
+        <TextBlock Text="BBDD Global" 
+                   FontSize="20" FontWeight="Bold" Foreground="White"
+                   HorizontalAlignment="Left" VerticalAlignment="Top"
+                   Margin="10,10,0,0"/>
 
         <DataGrid x:Name="dgProductos" 
-                  AutoGenerateColumns="False" 
-                  IsReadOnly="True"
-                  HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
-                 Margin="10, 60, 35, 25">
-
+          Style="{StaticResource CustomDataGridStyle}"
+          AutoGenerateColumns="False" 
+          IsReadOnly="True"
+          HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+          Margin="20, 65, 20, 20">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="categoriag" Binding="{Binding categoriag}" Width="*" />
                 <DataGridTextColumn Header="convocatoriag" Binding="{Binding convocatoriag}" Width="*" />
@@ -53,141 +51,50 @@
                 <DataGridTextColumn Header="puntosg" Binding="{Binding puntosg}" Width="*" />
                 <DataGridTextColumn Header="fecha_importacion" Binding="{Binding fechaimportacion}" Width="*" />
                 <DataGridTextColumn Header="observaciones" Binding="{Binding observaciones}" Width="*" />
-
             </DataGrid.Columns>
-
         </DataGrid>
         <TextBlock Text="Filtrar por:" 
             FontSize="16" Foreground="White"
-            HorizontalAlignment="Left" Margin="155,31,0,0"
-            VerticalAlignment="Top"/>
-        <Button Style="{StaticResource PageButtonStyle1}" Content="DNI" HorizontalAlignment="Left" Margin="238,28,0,0" VerticalAlignment="Top" Click="Button_Click"/>
+            HorizontalAlignment="Left" Margin="155,30,0,0"
+            VerticalAlignment="Top" Visibility="Collapsed"/>
+        <Button Style="{StaticResource PageButtonStyle1}" Content="Añadir Observación" HorizontalAlignment="Left" Margin="533,21,0,0" VerticalAlignment="Top" Click="Button_Click_2" Width="150" Height="29"/>
 
-        <Button Style="{StaticResource PageButtonStyle1}" Content="Email" HorizontalAlignment="Left" Margin="277,28,0,0" VerticalAlignment="Top" Click="Button_Click_1"/>
-    
-        <Button Style="{StaticResource PageButtonStyle1}" Content="Ver Cádiz" HorizontalAlignment="Left" Margin="350,28,0,0" VerticalAlignment="Top" Click="FiltrarCadiz"/>
-        <Button Style="{StaticResource PageButtonStyle1}" Content="Ver Málaga" HorizontalAlignment="Left" Margin="424,28,0,0" VerticalAlignment="Top" Click="FiltrarMalaga"/>
-        <Button Style="{StaticResource PageButtonStyle1}" Content="Añadir Observación" HorizontalAlignment="Left" Margin="531,28,0,0" VerticalAlignment="Top" Click="Button_Click_2"/>
+
         <ComboBox x:Name="cmbEstado"
-           HorizontalAlignment="Left" 
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-           VerticalAlignment="Top"
-           Margin="670,28,0,0"
-           SelectionChanged="cmbEstado_SelectionChanged">
+              HorizontalAlignment="Left"
+                Visibility="Collapsed"
+              VerticalAlignment="Top"
+              Margin="673,28,0,0"
+              SelectionChanged="cmbEstado_SelectionChanged" Height="24" Width="29">
             <ComboBoxItem>Procesando</ComboBoxItem>
             <ComboBoxItem>Gestionando</ComboBoxItem>
             <ComboBoxItem>Completado</ComboBoxItem>
         </ComboBox>
+        <ComboBox x:Name="filtrarPor"
+          HorizontalAlignment="Left"
+          VerticalAlignment="Top"
+          Margin="162,21,0,0"
+          Height="27"
+          Width="99"
+          SelectionChanged="filtrarPor_SelectionChanged" FontSize="16" >
+            <ComboBoxItem Content="Filtrar por:" IsSelected="True"/>
+            <ComboBoxItem Content="DNI"/>
+            <ComboBoxItem Content="Email"/>
+            <ComboBoxItem Content="Cádiz"/>
+            <ComboBoxItem Content="Málaga"/>
+        </ComboBox>
 
-        <Button Style="{StaticResource PageButtonStyle1}" Content="Exportar Backup" HorizontalAlignment="Left" Margin="261,91,0,0" VerticalAlignment="Bottom" Click="ExportarBackup"/>
-        <Button Style="{StaticResource PageButtonStyle1}" Content="Importar Backup" HorizontalAlignment="Left" Margin="377,91,0,0" VerticalAlignment="Bottom" Click="ImportarBackup"/>
-  
 
+
+        <Button Style="{StaticResource PageButtonStyle2}"
+        Content="Exportar Backup"
+        HorizontalAlignment="Left"
+        Margin="937,21,0,0"
+        VerticalAlignment="Top"
+        Click="ExportarBackup"
+        Width="118"
+        Height="29"
+        ToolTip="Guardar todos los registros que se muestran en pantalla en un archivo CSV. Almacenamiento a largo plazo de datos."/>
+        <Button Style="{StaticResource PageButtonStyle2}"  Content="Importar Backup" HorizontalAlignment="Left" Margin="1068,21,0,0"  VerticalAlignment="Top" Click="ImportarBackup" Height="29" Width="120" ToolTip="Carga todos los registros compatibles de un archivo CSV. Si la importación es correcta, muestra esos datos en pantalla."/>
     </Grid>
 </Page>

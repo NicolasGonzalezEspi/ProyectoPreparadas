@@ -38,5 +38,10 @@ namespace trabajoFinalInterfaces
             this.Close();
         }
 
+        private void BtnPedidos_Click(object sender, RoutedEventArgs e)
+        {
+            MainFrame.Navigate(new Pedidos());
+
+        }
     }
 }

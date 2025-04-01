@@ -1147,11 +1147,11 @@ observaciones = VALUES(observaciones);";
 
 
             // Limpiar Tabla Temporal
-            //  string eliminarDetallesQuery = "TRUNCATE TABLE tablaTemporal";
-            // using (MySqlCommand cmd = new MySqlCommand(eliminarDetallesQuery, conexion))
-           // {
-             //   cmd.ExecuteNonQuery();
-           // }
+              string eliminarDetallesQuery = "TRUNCATE TABLE tablaTemporal";
+             using (MySqlCommand cmd = new MySqlCommand(eliminarDetallesQuery, conexion))
+            {
+                cmd.ExecuteNonQuery();
+            }
 
             return true;
         }

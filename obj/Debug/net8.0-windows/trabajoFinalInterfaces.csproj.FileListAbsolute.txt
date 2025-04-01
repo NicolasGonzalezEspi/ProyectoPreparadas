@@ -104,3 +104,5 @@ C:\Users\NicolasGonzalezEspin\Desktop\trabajo vedruna interfaces crud\trabajoFin
 C:\Users\NicolasGonzalezEspin\Desktop\trabajo vedruna interfaces crud\trabajoFinalInterfaces\trabajoFinalInterfaces\obj\Debug\net8.0-windows\trabajoFinalInterfaces.csproj.ResolveComReference.cache
 C:\Users\NicolasGonzalezEspin\Desktop\trabajo vedruna interfaces crud\trabajoFinalInterfaces\trabajoFinalInterfaces\obj\Debug\net8.0-windows\trabajoFinalInterfaces.sourcelink.json
 C:\Users\NicolasGonzalezEspin\Desktop\trabajo vedruna interfaces crud\trabajoFinalInterfaces\trabajoFinalInterfaces\obj\Debug\net8.0-windows\Dictionary1.baml
+C:\Users\NicolasGonzalezEspin\Desktop\trabajo vedruna interfaces crud\trabajoFinalInterfaces\trabajoFinalInterfaces\obj\Debug\net8.0-windows\Pedidos.g.cs
+C:\Users\NicolasGonzalezEspin\Desktop\trabajo vedruna interfaces crud\trabajoFinalInterfaces\trabajoFinalInterfaces\obj\Debug\net8.0-windows\Pedidos.baml

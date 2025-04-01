@@ -56,6 +56,9 @@ C:\Users\NicolasGonzalezEspin\Desktop\trabajo vedruna interfaces crud\trabajoFin
 C:\Users\NicolasGonzalezEspin\Desktop\trabajo vedruna interfaces crud\trabajoFinalInterfaces\trabajoFinalInterfaces\obj\Release\net8.0-windows\trabajoFinalInterfaces.pdb
 C:\Users\NicolasGonzalezEspin\Desktop\trabajo vedruna interfaces crud\trabajoFinalInterfaces\trabajoFinalInterfaces\obj\Release\net8.0-windows\trabajoFinalInterfaces.genruntimeconfig.cache
 C:\Users\NicolasGonzalezEspin\Desktop\trabajo vedruna interfaces crud\trabajoFinalInterfaces\trabajoFinalInterfaces\obj\Release\net8.0-windows\ref\trabajoFinalInterfaces.dll
+C:\Users\NicolasGonzalezEspin\Desktop\trabajo vedruna interfaces crud\trabajoFinalInterfaces\trabajoFinalInterfaces\obj\Release\net8.0-windows\Dictionary1.baml
+C:\Users\NicolasGonzalezEspin\Desktop\trabajo vedruna interfaces crud\trabajoFinalInterfaces\trabajoFinalInterfaces\obj\Release\net8.0-windows\Pedidos.g.cs
+C:\Users\NicolasGonzalezEspin\Desktop\trabajo vedruna interfaces crud\trabajoFinalInterfaces\trabajoFinalInterfaces\obj\Release\net8.0-windows\Pedidos.baml
 C:\Users\NicolasGonzalezEspin\Desktop\trabajo vedruna interfaces crud\trabajoFinalInterfaces\trabajoFinalInterfaces\bin\Release\net8.0-windows\trabajoFinalInterfaces.dll.manifest
 C:\Users\NicolasGonzalezEspin\Desktop\trabajo vedruna interfaces crud\trabajoFinalInterfaces\trabajoFinalInterfaces\bin\Release\net8.0-windows\trabajoFinalInterfaces.application
 C:\Users\NicolasGonzalezEspin\Desktop\trabajo vedruna interfaces crud\trabajoFinalInterfaces\trabajoFinalInterfaces\obj\Release\net8.0-windows\trabajoFinalInterfaces.dll.manifest

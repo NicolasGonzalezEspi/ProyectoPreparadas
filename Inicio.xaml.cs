@@ -28,7 +28,7 @@ namespace trabajoFinalInterfaces
             dgProductos.ItemsSource = productos.DefaultView; //volcamos los datos al datagrid (la tabla)
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void Button_Click()
         {
             // Mostrar ventana emergente para ingresar el DNI
             string dniIngresado = Microsoft.VisualBasic.Interaction.InputBox(
@@ -36,6 +36,8 @@ namespace trabajoFinalInterfaces
                 "Buscar por DNI",
                 ""
             );
+
+
 
             // Verificar que el DNI no esté vacío
             if (!string.IsNullOrWhiteSpace(dniIngresado))
@@ -61,7 +63,7 @@ namespace trabajoFinalInterfaces
             }
         }
 
-        private void Button_Click_1(object sender, RoutedEventArgs e)
+        private void Button_Click_1()
         {
             // Mostrar ventana emergente para ingresar el email
             string emailIngresado = Microsoft.VisualBasic.Interaction.InputBox(
@@ -351,7 +353,7 @@ namespace trabajoFinalInterfaces
             }
         }
 
-        private void FiltrarCadiz(object sender, RoutedEventArgs e)
+        private void FiltrarCadiz()
         {
             DataTable resultado = BaseDeDatos.MostrarBBDDGlobalFiltroCadiz();
 
@@ -364,7 +366,7 @@ namespace trabajoFinalInterfaces
 
             }
         }
-        private void FiltrarMalaga(object sender, RoutedEventArgs e)
+        private void FiltrarMalaga()
         {
             DataTable resultado = BaseDeDatos.MostrarBBDDGlobalFiltroMalaga();
 
@@ -430,6 +432,35 @@ namespace trabajoFinalInterfaces
 
             }
         }
+        private void filtrarPor_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (filtrarPor.SelectedItem is ComboBoxItem selectedItem)
+            {
+                string selectedValue = selectedItem.Content.ToString();
+
+                switch (selectedValue)
+                {
+                    case "DNI":
+                        Button_Click();
+                        break;
+                    case "Email":
+                        Button_Click_1();
+                        break;
+                    case "Cádiz":
+                        FiltrarCadiz();
+                        break;
+                    case "Málaga":
+                        FiltrarMalaga();
+                        break;
+                }
+            }
+        }
+
+
+
+
+
+
 
         /*  
          *        <ComboBox x:Name="cmbEstado"

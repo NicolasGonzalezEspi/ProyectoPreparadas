@@ -3,48 +3,24 @@
   "WorkspaceRootPath": "C:\\Users\\NicolasGonzalezEspin\\Desktop\\trabajo vedruna interfaces crud\\trabajoFinalInterfaces\\trabajoFinalInterfaces\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{9B28FB67-CDBF-E3D0-CDC1-F341B16E99BE}|trabajoFinalInterfaces.csproj|c:\\users\\nicolasgonzalezespin\\desktop\\trabajo vedruna interfaces crud\\trabajofinalinterfaces\\trabajofinalinterfaces\\inicio.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{9B28FB67-CDBF-E3D0-CDC1-F341B16E99BE}|trabajoFinalInterfaces.csproj|solutionrelative:inicio.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+      "AbsoluteMoniker": "D:0:0:{9B28FB67-CDBF-E3D0-CDC1-F341B16E99BE}|trabajoFinalInterfaces.csproj|c:\\users\\nicolasgonzalezespin\\desktop\\trabajo vedruna interfaces crud\\trabajofinalinterfaces\\trabajofinalinterfaces\\borrar.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{9B28FB67-CDBF-E3D0-CDC1-F341B16E99BE}|trabajoFinalInterfaces.csproj|solutionrelative:borrar.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{9B28FB67-CDBF-E3D0-CDC1-F341B16E99BE}|trabajoFinalInterfaces.csproj|c:\\users\\nicolasgonzalezespin\\desktop\\trabajo vedruna interfaces crud\\trabajofinalinterfaces\\trabajofinalinterfaces\\dictionary1.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{9B28FB67-CDBF-E3D0-CDC1-F341B16E99BE}|trabajoFinalInterfaces.csproj|solutionrelative:dictionary1.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+      "AbsoluteMoniker": "D:0:0:{9B28FB67-CDBF-E3D0-CDC1-F341B16E99BE}|trabajoFinalInterfaces.csproj|c:\\users\\nicolasgonzalezespin\\desktop\\trabajo vedruna interfaces crud\\trabajofinalinterfaces\\trabajofinalinterfaces\\pedidos.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{9B28FB67-CDBF-E3D0-CDC1-F341B16E99BE}|trabajoFinalInterfaces.csproj|solutionrelative:pedidos.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9B28FB67-CDBF-E3D0-CDC1-F341B16E99BE}|trabajoFinalInterfaces.csproj|c:\\users\\nicolasgonzalezespin\\desktop\\trabajo vedruna interfaces crud\\trabajofinalinterfaces\\trabajofinalinterfaces\\pedidos.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9B28FB67-CDBF-E3D0-CDC1-F341B16E99BE}|trabajoFinalInterfaces.csproj|solutionrelative:pedidos.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{9B28FB67-CDBF-E3D0-CDC1-F341B16E99BE}|trabajoFinalInterfaces.csproj|c:\\users\\nicolasgonzalezespin\\desktop\\trabajo vedruna interfaces crud\\trabajofinalinterfaces\\trabajofinalinterfaces\\main.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
       "RelativeMoniker": "D:0:0:{9B28FB67-CDBF-E3D0-CDC1-F341B16E99BE}|trabajoFinalInterfaces.csproj|solutionrelative:main.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{9B28FB67-CDBF-E3D0-CDC1-F341B16E99BE}|trabajoFinalInterfaces.csproj|c:\\users\\nicolasgonzalezespin\\desktop\\trabajo vedruna interfaces crud\\trabajofinalinterfaces\\trabajofinalinterfaces\\agregar.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{9B28FB67-CDBF-E3D0-CDC1-F341B16E99BE}|trabajoFinalInterfaces.csproj|solutionrelative:agregar.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{9B28FB67-CDBF-E3D0-CDC1-F341B16E99BE}|trabajoFinalInterfaces.csproj|c:\\users\\nicolasgonzalezespin\\desktop\\trabajo vedruna interfaces crud\\trabajofinalinterfaces\\trabajofinalinterfaces\\app.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{9B28FB67-CDBF-E3D0-CDC1-F341B16E99BE}|trabajoFinalInterfaces.csproj|solutionrelative:app.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{9B28FB67-CDBF-E3D0-CDC1-F341B16E99BE}|trabajoFinalInterfaces.csproj|c:\\users\\nicolasgonzalezespin\\desktop\\trabajo vedruna interfaces crud\\trabajofinalinterfaces\\trabajofinalinterfaces\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{9B28FB67-CDBF-E3D0-CDC1-F341B16E99BE}|trabajoFinalInterfaces.csproj|solutionrelative:mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{9B28FB67-CDBF-E3D0-CDC1-F341B16E99BE}|trabajoFinalInterfaces.csproj|c:\\users\\nicolasgonzalezespin\\desktop\\trabajo vedruna interfaces crud\\trabajofinalinterfaces\\trabajofinalinterfaces\\inicio.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{9B28FB67-CDBF-E3D0-CDC1-F341B16E99BE}|trabajoFinalInterfaces.csproj|solutionrelative:inicio.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{9B28FB67-CDBF-E3D0-CDC1-F341B16E99BE}|trabajoFinalInterfaces.csproj|c:\\users\\nicolasgonzalezespin\\desktop\\trabajo vedruna interfaces crud\\trabajofinalinterfaces\\trabajofinalinterfaces\\basededatos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{9B28FB67-CDBF-E3D0-CDC1-F341B16E99BE}|trabajoFinalInterfaces.csproj|solutionrelative:basededatos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{9B28FB67-CDBF-E3D0-CDC1-F341B16E99BE}|trabajoFinalInterfaces.csproj|c:\\users\\nicolasgonzalezespin\\desktop\\trabajo vedruna interfaces crud\\trabajofinalinterfaces\\trabajofinalinterfaces\\borrar.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{9B28FB67-CDBF-E3D0-CDC1-F341B16E99BE}|trabajoFinalInterfaces.csproj|solutionrelative:borrar.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{9B28FB67-CDBF-E3D0-CDC1-F341B16E99BE}|trabajoFinalInterfaces.csproj|c:\\users\\nicolasgonzalezespin\\desktop\\trabajo vedruna interfaces crud\\trabajofinalinterfaces\\trabajofinalinterfaces\\agregar.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{9B28FB67-CDBF-E3D0-CDC1-F341B16E99BE}|trabajoFinalInterfaces.csproj|solutionrelative:agregar.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{9B28FB67-CDBF-E3D0-CDC1-F341B16E99BE}|trabajoFinalInterfaces.csproj|c:\\users\\nicolasgonzalezespin\\desktop\\trabajo vedruna interfaces crud\\trabajofinalinterfaces\\trabajofinalinterfaces\\borrar.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{9B28FB67-CDBF-E3D0-CDC1-F341B16E99BE}|trabajoFinalInterfaces.csproj|solutionrelative:borrar.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+      "AbsoluteMoniker": "D:0:0:{9B28FB67-CDBF-E3D0-CDC1-F341B16E99BE}|trabajoFinalInterfaces.csproj|c:\\users\\nicolasgonzalezespin\\desktop\\trabajo vedruna interfaces crud\\trabajofinalinterfaces\\trabajofinalinterfaces\\modificar.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{9B28FB67-CDBF-E3D0-CDC1-F341B16E99BE}|trabajoFinalInterfaces.csproj|solutionrelative:modificar.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     }
   ],
   "DocumentGroupContainers": [
@@ -54,142 +30,67 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "Borrar.xaml.cs",
-              "DocumentMoniker": "C:\\Users\\NicolasGonzalezEspin\\Desktop\\trabajo vedruna interfaces crud\\trabajoFinalInterfaces\\trabajoFinalInterfaces\\Borrar.xaml.cs",
-              "RelativeDocumentMoniker": "Borrar.xaml.cs",
-              "ToolTip": "C:\\Users\\NicolasGonzalezEspin\\Desktop\\trabajo vedruna interfaces crud\\trabajoFinalInterfaces\\trabajoFinalInterfaces\\Borrar.xaml.cs",
-              "RelativeToolTip": "Borrar.xaml.cs",
-              "ViewState": "AgIAABUBAAAAAAAAAADwv1gBAAADAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-26T08:42:52.898Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 0,
               "Title": "Borrar.xaml",
               "DocumentMoniker": "C:\\Users\\NicolasGonzalezEspin\\Desktop\\trabajo vedruna interfaces crud\\trabajoFinalInterfaces\\trabajoFinalInterfaces\\Borrar.xaml",
               "RelativeDocumentMoniker": "Borrar.xaml",
               "ToolTip": "C:\\Users\\NicolasGonzalezEspin\\Desktop\\trabajo vedruna interfaces crud\\trabajoFinalInterfaces\\trabajoFinalInterfaces\\Borrar.xaml",
               "RelativeToolTip": "Borrar.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-03-26T08:42:49.246Z",
+              "WhenOpened": "2025-04-01T08:21:39.962Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 4,
+              "Title": "Modificar.xaml",
+              "DocumentMoniker": "C:\\Users\\NicolasGonzalezEspin\\Desktop\\trabajo vedruna interfaces crud\\trabajoFinalInterfaces\\trabajoFinalInterfaces\\Modificar.xaml",
+              "RelativeDocumentMoniker": "Modificar.xaml",
+              "ToolTip": "C:\\Users\\NicolasGonzalezEspin\\Desktop\\trabajo vedruna interfaces crud\\trabajoFinalInterfaces\\trabajoFinalInterfaces\\Modificar.xaml",
+              "RelativeToolTip": "Modificar.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-04-01T08:20:59.465Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
               "Title": "Main.xaml",
               "DocumentMoniker": "C:\\Users\\NicolasGonzalezEspin\\Desktop\\trabajo vedruna interfaces crud\\trabajoFinalInterfaces\\trabajoFinalInterfaces\\Main.xaml",
               "RelativeDocumentMoniker": "Main.xaml",
               "ToolTip": "C:\\Users\\NicolasGonzalezEspin\\Desktop\\trabajo vedruna interfaces crud\\trabajoFinalInterfaces\\trabajoFinalInterfaces\\Main.xaml",
               "RelativeToolTip": "Main.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-03-26T08:28:08.512Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Inicio.xaml",
-              "DocumentMoniker": "C:\\Users\\NicolasGonzalezEspin\\Desktop\\trabajo vedruna interfaces crud\\trabajoFinalInterfaces\\trabajoFinalInterfaces\\Inicio.xaml",
-              "RelativeDocumentMoniker": "Inicio.xaml",
-              "ToolTip": "C:\\Users\\NicolasGonzalezEspin\\Desktop\\trabajo vedruna interfaces crud\\trabajoFinalInterfaces\\trabajoFinalInterfaces\\Inicio.xaml*",
-              "RelativeToolTip": "Inicio.xaml*",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-03-26T08:30:03.701Z",
+              "WhenOpened": "2025-04-01T07:29:18.543Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "Dictionary1.xaml",
-              "DocumentMoniker": "C:\\Users\\NicolasGonzalezEspin\\Desktop\\trabajo vedruna interfaces crud\\trabajoFinalInterfaces\\trabajoFinalInterfaces\\Dictionary1.xaml",
-              "RelativeDocumentMoniker": "Dictionary1.xaml",
-              "ToolTip": "C:\\Users\\NicolasGonzalezEspin\\Desktop\\trabajo vedruna interfaces crud\\trabajoFinalInterfaces\\trabajoFinalInterfaces\\Dictionary1.xaml",
-              "RelativeToolTip": "Dictionary1.xaml",
+              "Title": "Pedidos.xaml",
+              "DocumentMoniker": "C:\\Users\\NicolasGonzalezEspin\\Desktop\\trabajo vedruna interfaces crud\\trabajoFinalInterfaces\\trabajoFinalInterfaces\\Pedidos.xaml",
+              "RelativeDocumentMoniker": "Pedidos.xaml",
+              "ToolTip": "C:\\Users\\NicolasGonzalezEspin\\Desktop\\trabajo vedruna interfaces crud\\trabajoFinalInterfaces\\trabajoFinalInterfaces\\Pedidos.xaml",
+              "RelativeToolTip": "Pedidos.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-03-27T12:09:00.297Z",
+              "WhenOpened": "2025-04-01T07:02:05.653Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Agregar.xaml",
-              "DocumentMoniker": "C:\\Users\\NicolasGonzalezEspin\\Desktop\\trabajo vedruna interfaces crud\\trabajoFinalInterfaces\\trabajoFinalInterfaces\\Agregar.xaml",
-              "RelativeDocumentMoniker": "Agregar.xaml",
-              "ToolTip": "C:\\Users\\NicolasGonzalezEspin\\Desktop\\trabajo vedruna interfaces crud\\trabajoFinalInterfaces\\trabajoFinalInterfaces\\Agregar.xaml",
-              "RelativeToolTip": "Agregar.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-03-26T09:29:25.944Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "Agregar.xaml.cs",
-              "DocumentMoniker": "C:\\Users\\NicolasGonzalezEspin\\Desktop\\trabajo vedruna interfaces crud\\trabajoFinalInterfaces\\trabajoFinalInterfaces\\Agregar.xaml.cs",
-              "RelativeDocumentMoniker": "Agregar.xaml.cs",
-              "ToolTip": "C:\\Users\\NicolasGonzalezEspin\\Desktop\\trabajo vedruna interfaces crud\\trabajoFinalInterfaces\\trabajoFinalInterfaces\\Agregar.xaml.cs",
-              "RelativeToolTip": "Agregar.xaml.cs",
-              "ViewState": "AgIAAFwAAAAAAAAAAAAUwDwAAAAlAAAAAAAAAA==",
+              "DocumentIndex": 2,
+              "Title": "Pedidos.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\NicolasGonzalezEspin\\Desktop\\trabajo vedruna interfaces crud\\trabajoFinalInterfaces\\trabajoFinalInterfaces\\Pedidos.xaml.cs",
+              "RelativeDocumentMoniker": "Pedidos.xaml.cs",
+              "ToolTip": "C:\\Users\\NicolasGonzalezEspin\\Desktop\\trabajo vedruna interfaces crud\\trabajoFinalInterfaces\\trabajoFinalInterfaces\\Pedidos.xaml.cs",
+              "RelativeToolTip": "Pedidos.xaml.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABwAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-27T09:30:46.054Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "baseDeDatos.cs",
-              "DocumentMoniker": "C:\\Users\\NicolasGonzalezEspin\\Desktop\\trabajo vedruna interfaces crud\\trabajoFinalInterfaces\\trabajoFinalInterfaces\\baseDeDatos.cs",
-              "RelativeDocumentMoniker": "baseDeDatos.cs",
-              "ToolTip": "C:\\Users\\NicolasGonzalezEspin\\Desktop\\trabajo vedruna interfaces crud\\trabajoFinalInterfaces\\trabajoFinalInterfaces\\baseDeDatos.cs",
-              "RelativeToolTip": "baseDeDatos.cs",
-              "ViewState": "AgIAAP4CAAAAAAAAAAAhwBEDAAArAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-26T10:45:44.088Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "Inicio.xaml.cs",
-              "DocumentMoniker": "C:\\Users\\NicolasGonzalezEspin\\Desktop\\trabajo vedruna interfaces crud\\trabajoFinalInterfaces\\trabajoFinalInterfaces\\Inicio.xaml.cs",
-              "RelativeDocumentMoniker": "Inicio.xaml.cs",
-              "ToolTip": "C:\\Users\\NicolasGonzalezEspin\\Desktop\\trabajo vedruna interfaces crud\\trabajoFinalInterfaces\\trabajoFinalInterfaces\\Inicio.xaml.cs",
-              "RelativeToolTip": "Inicio.xaml.cs",
-              "ViewState": "AgIAAB4AAAAAAAAAAIA2wFIBAAAmAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-26T08:42:20.5Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "App.xaml",
-              "DocumentMoniker": "C:\\Users\\NicolasGonzalezEspin\\Desktop\\trabajo vedruna interfaces crud\\trabajoFinalInterfaces\\trabajoFinalInterfaces\\App.xaml",
-              "RelativeDocumentMoniker": "App.xaml",
-              "ToolTip": "C:\\Users\\NicolasGonzalezEspin\\Desktop\\trabajo vedruna interfaces crud\\trabajoFinalInterfaces\\trabajoFinalInterfaces\\App.xaml",
-              "RelativeToolTip": "App.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-03-27T12:00:23.504Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "MainWindow.xaml",
-              "DocumentMoniker": "C:\\Users\\NicolasGonzalezEspin\\Desktop\\trabajo vedruna interfaces crud\\trabajoFinalInterfaces\\trabajoFinalInterfaces\\MainWindow.xaml",
-              "RelativeDocumentMoniker": "MainWindow.xaml",
-              "ToolTip": "C:\\Users\\NicolasGonzalezEspin\\Desktop\\trabajo vedruna interfaces crud\\trabajoFinalInterfaces\\trabajoFinalInterfaces\\MainWindow.xaml",
-              "RelativeToolTip": "MainWindow.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-03-26T08:26:40.229Z",
+              "WhenOpened": "2025-04-01T07:08:04.528Z",
               "EditorCaption": ""
             }
           ]
