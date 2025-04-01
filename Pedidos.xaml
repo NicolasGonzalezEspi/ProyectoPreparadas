@@ -1,0 +1,55 @@
+﻿<Page x:Class="trabajoFinalInterfaces.Pedidos"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:trabajoFinalInterfaces"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="Pedidos">
+    <Page.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <!-- Fusionar el diccionario de recursos que contiene los estilos -->
+                <ResourceDictionary Source="Dictionary1.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Page.Resources>
+    <Grid Background="#34485e" >
+        <TextBlock Text="Importar Marketplace" 
+            FontSize="20" FontWeight="Bold" Foreground="White"
+            HorizontalAlignment="Left" VerticalAlignment="Top"
+            Margin="10,10,0,0"/>
+        <DataGrid x:Name="dgProductos" Style="{StaticResource CustomDataGridStyle}" 
+            AutoGenerateColumns="False" 
+            IsReadOnly="True"
+               Margin="20, 65, 20, 20">
+
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="ID Pedido MK" Binding="{Binding id_pedido_mk}" Width="*" />
+                <DataGridTextColumn Header="Fecha Pedido" Binding="{Binding fecha_Pedido}" Width="*" />
+                <DataGridTextColumn Header="ID Usuario" Binding="{Binding idUsuario}" Width="*" />
+                <DataGridTextColumn Header="Dirección" Binding="{Binding direccion}" Width="*" />
+                <DataGridTextColumn Header="Nota Envío" Binding="{Binding nota_envio}" Width="*" />
+                <DataGridTextColumn Header="Teléfono" Binding="{Binding telefono}" Width="*" />
+                <DataGridTextColumn Header="Email" Binding="{Binding email}" Width="*" />
+                <DataGridTextColumn Header="SKU" Binding="{Binding SKU}" Width="*" />
+                <DataGridTextColumn Header="Proveedor" Binding="{Binding proveedor}" Width="*" />
+                <DataGridTextColumn Header="Unidades" Binding="{Binding uds}" Width="*" />
+                <DataGridTextColumn Header="Nombre Artículo" Binding="{Binding nombre_articulo}" Width="*" />
+                <DataGridTextColumn Header="Puntos" Binding="{Binding puntosg}" Width="*" />
+                <DataGridTextColumn Header="Categoría" Binding="{Binding categoria}" Width="*" />
+                <DataGridTextColumn Header="Estado Pedido" Binding="{Binding estado_pedido}" Width="*" />
+                <DataGridTextColumn Header="Agencia Transporte" Binding="{Binding agencia_transporte}" Width="*" />
+                <DataGridTextColumn Header="Fecha Gestión" Binding="{Binding fecha_gestion}" Width="*" />
+                <DataGridTextColumn Header="Fecha Inicio Tránsito" Binding="{Binding fecha_inicio_transito}" Width="*" />
+                <DataGridTextColumn Header="Fecha Entrega" Binding="{Binding fecha_entrega_alumna}" Width="*" />
+                <DataGridTextColumn Header="Factura DMI" Binding="{Binding facturadmi_snlosllanos}" Width="*" />
+                <DataGridTextColumn Header="Importe sin IVA" Binding="{Binding importe_sin_iva}" Width="*" />
+                <DataGridTextColumn Header="Doc. Incidencia" Binding="{Binding doc_incidencia}" Width="*" />
+                <DataGridTextColumn Header="Info. Incidencia" Binding="{Binding info_incidencia}" Width="*" />
+            </DataGrid.Columns>
+        </DataGrid>
+
+    </Grid>
+</Page>
