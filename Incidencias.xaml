@@ -1,0 +1,46 @@
+﻿<Page x:Class="trabajoFinalInterfaces.Incidencias"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:trabajoFinalInterfaces"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="Incidencias">
+
+    <Page.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <!-- Fusionar el diccionario de recursos que contiene los estilos -->
+                <ResourceDictionary Source="Dictionary1.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Page.Resources>
+    <Grid Background="#34485e" >
+        <TextBlock Text="Incidencias" 
+         FontSize="20" FontWeight="Bold" Foreground="White"
+         HorizontalAlignment="Left" VerticalAlignment="Top"
+         Margin="20,10,0,0"/>
+        <DataGrid x:Name="dgProductos" Style="{StaticResource CustomDataGridStyle}" 
+         AutoGenerateColumns="False" 
+         IsReadOnly="True"
+            Margin="20, 65, 20, 20">
+            
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="ID Pedido MK" Binding="{Binding id_pedido_mk_i}" Width="*" />
+                <DataGridTextColumn Header="Fecha Pedido" Binding="{Binding fecha_Pedido}" Width="*" />
+                <DataGridTextColumn Header="Dirección" Binding="{Binding direccion}" Width="*" />
+                <DataGridTextColumn Header="Proveedor" Binding="{Binding proveedor}" Width="*" />
+                <DataGridTextColumn Header="Nombre Artículo" Binding="{Binding nombre_articulo}" Width="*" />
+                <DataGridTextColumn Header="Fecha Notificación" Binding="{Binding fecha_notificacion}" Width="*" />
+                <DataGridTextColumn Header="Fecha Gestión" Binding="{Binding fecha_gestion}" Width="*" />
+                <DataGridTextColumn Header="Incidencia" Binding="{Binding incidencia}" Width="*" />
+                <DataGridTextColumn Header="Estado" Binding="{Binding estado}" Width="*" />
+                <DataGridTextColumn Header="Solución" Binding="{Binding solucion}" Width="*" />
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button Style="{StaticResource PageButtonStyle1}" Content="Actualizar Incidencia" HorizontalAlignment="Left" Margin="533,21,0,0" VerticalAlignment="Top" Click="Actualizar_Incidencia" Width="150" Height="29"/>
+        <Button Style="{StaticResource PageButtonStyle1}" Content="Duplicar Incidencia (R)" HorizontalAlignment="Left" Margin="250,21,0,0" VerticalAlignment="Top" Width="167" Height="29" Click="Button_Click"/>
+
+    </Grid>
+</Page>
