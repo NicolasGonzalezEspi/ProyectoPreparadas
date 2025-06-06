@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
-    <_LastSelectedProfileId>C:\Users\NicolasGonzalezEspin\Desktop\trabajo vedruna interfaces crud\trabajoFinalInterfaces\trabajoFinalInterfaces\Properties\PublishProfiles\ClickOnceProfile.pubxml</_LastSelectedProfileId>
+    <_LastSelectedProfileId>C:\Users\NicolasGonzalezEspin\Desktop\trabajo vedruna interfaces crud\trabajoFinalInterfaces\trabajoFinalInterfaces\Properties\PublishProfiles\FolderProfile2.pubxml</_LastSelectedProfileId>
   </PropertyGroup>
   <ItemGroup>
     <ApplicationDefinition Update="App.xaml">
@@ -9,10 +9,37 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
+    <Compile Update="Actividad.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Agregar.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Borrar.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="CrearAbono.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="CrearDireccion.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="CrearFactura.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="CrearIncidencia.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="CrearProducto.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="CrearTracking.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Dashboard.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Incidencias.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Inicio.xaml.cs">
@@ -27,12 +54,24 @@
     <Compile Update="Pedidos.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Productos.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Reportes.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Page Update="Actividad.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="Agregar.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Borrar.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Dashboard.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Inicio.xaml">
@@ -45,6 +84,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Modificar.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Reportes.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>

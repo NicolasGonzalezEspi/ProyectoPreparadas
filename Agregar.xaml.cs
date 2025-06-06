@@ -9,6 +9,7 @@ using CsvHelper.Configuration;
 using CsvHelper;
 using Microsoft.Win32;
 using MySql.Data.MySqlClient;
+using Mysqlx.Cursor;
 
 namespace trabajoFinalInterfaces
 {
@@ -17,13 +18,12 @@ namespace trabajoFinalInterfaces
 
         private string archivoCSVPath;
 
-
-
         public Agregar()
         {
             InitializeComponent();
             //CargarCategorias();
             CargarProductos();
+            ActualizarTotalRegistros();
         }
         /*
          * 
@@ -41,6 +41,7 @@ namespace trabajoFinalInterfaces
         {
             DataTable productos = BaseDeDatos.MostrarMKP();
             dgProductos.ItemsSource = productos.DefaultView;
+            ActualizarTotalRegistros();
         }
 
         private void BtnSeleccionarArchivoCSVClickBis(object sender, RoutedEventArgs e)
@@ -54,9 +55,14 @@ namespace trabajoFinalInterfaces
                 archivoCSVPath = openFileDialog.FileName;
                 MessageBox.Show($"Archivo seleccionado: {archivoCSVPath}", "Éxito", MessageBoxButton.OK, MessageBoxImage.Information);
             }
-            SubirDatosCSVbis();
+            SubirDatosCSVbisv2();
         }
 
+        private void ActualizarTotalRegistros()
+        {
+            int totalRegistros = BaseDeDatos.ObtenerTotalRegistrosTablaMKP();
+            txtTotalRegistros.Text = totalRegistros.ToString();
+        }
 
         private void SubirDatosCSVbis()
         {
@@ -68,6 +74,7 @@ namespace trabajoFinalInterfaces
 
             try
             {
+
                 var tablaFinal = new DataTable();
                 tablaFinal.Columns.AddRange(new DataColumn[]
                 {
@@ -77,7 +84,9 @@ namespace trabajoFinalInterfaces
             new DataColumn("first_name", typeof(string)),
             new DataColumn("last_name", typeof(string)),
             new DataColumn("Telefono", typeof(string)),
-            new DataColumn("account_funds", typeof(int))
+            new DataColumn("account_funds", typeof(int)),
+                new DataColumn("dni", typeof(string)),
+    new DataColumn("codigo_convocatoria", typeof(string))
                 });
 
                 var config = new CsvConfiguration(CultureInfo.InvariantCulture)
@@ -96,6 +105,7 @@ namespace trabajoFinalInterfaces
                     csv.Read();
                     csv.ReadHeader();
 
+                    int filaContador = 0;
                     while (csv.Read())
                     {
                         // Verificar si el primer campo (user_login) no está vacío o es nulo
@@ -110,6 +120,11 @@ namespace trabajoFinalInterfaces
                             nuevaFila["last_name"] = csv.GetField(4) ?? "";
                             nuevaFila["Telefono"] = csv.GetField(5) ?? "";
                             nuevaFila["account_funds"] = int.TryParse(csv.GetField(6), out int funds) ? funds : 0;
+
+                            // Generar valores únicos
+                            string valorUnico = DateTime.Now.ToString("yyyyMMddHHmmssfff") + "_" + filaContador++;
+                            nuevaFila["dni"] = "CSV_" + valorUnico;
+                            nuevaFila["codigo_convocatoria"] = "CSV_" + valorUnico;
 
                             tablaFinal.Rows.Add(nuevaFila);
                         }
@@ -133,6 +148,137 @@ namespace trabajoFinalInterfaces
             }
         }
 
+
+        private void SubirDatosCSVbisv2()
+        {
+            if (string.IsNullOrEmpty(archivoCSVPath))
+            {
+                MessageBox.Show("Selecciona un archivo CSV válido.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+
+
+            try
+            {
+
+                var tablaFinal = new DataTable();
+                tablaFinal.Columns.AddRange(new DataColumn[]
+                {
+            new DataColumn("user_login", typeof(string)),
+            new DataColumn("user_email", typeof(string)),
+            new DataColumn("user_nicename", typeof(string)),
+                  new DataColumn("account_funds", typeof(int)),
+            new DataColumn("first_name", typeof(string)),
+            new DataColumn("last_name", typeof(string)),
+            new DataColumn("Telefono", typeof(string)),
+                new DataColumn("dni", typeof(string)),
+    new DataColumn("codigo_convocatoria", typeof(string))
+                });
+
+                var config = new CsvConfiguration(CultureInfo.InvariantCulture)
+                {
+                    Encoding = Encoding.GetEncoding(1252),
+                    Delimiter = ";",
+                    TrimOptions = TrimOptions.Trim,
+                    MissingFieldFound = null,
+                    HeaderValidated = null,
+                    IgnoreBlankLines = true
+                };
+
+                using (var reader = new StreamReader(archivoCSVPath, Encoding.GetEncoding(1252)))
+                using (var csv = new CsvReader(reader, config))
+                {
+                    csv.Read();
+                    csv.ReadHeader();
+
+                    int filaContador = 0;
+                    while (csv.Read())
+                    {
+                        // Verificar si el primer campo (user_login) no está vacío o es nulo
+                        string userLogin = csv.GetField(0);
+                        if (!string.IsNullOrWhiteSpace(userLogin))
+                        {
+                            var nuevaFila = tablaFinal.NewRow();
+                            nuevaFila["user_login"] = userLogin;
+                            nuevaFila["user_email"] = csv.GetField(1) ?? "";
+                            nuevaFila["user_nicename"] = csv.GetField(2) ?? "";
+                            nuevaFila["first_name"] = csv.GetField(3) ?? "";
+                            nuevaFila["last_name"] = csv.GetField(4) ?? "";
+                            nuevaFila["Telefono"] = csv.GetField(5) ?? "";
+                            nuevaFila["account_funds"] = int.TryParse(csv.GetField(6), out int funds) ? funds : 0;
+
+                            // Generar valores únicos
+                            string valorUnico = DateTime.Now.ToString("yyyyMMddHHmmssfff") + "_" + filaContador++;
+                            nuevaFila["dni"] = "CSV_" + valorUnico;
+                            nuevaFila["codigo_convocatoria"] = "CSV_" + valorUnico;
+
+                            tablaFinal.Rows.Add(nuevaFila);
+                        }
+                    }
+                }
+
+                if (BaseDeDatos.InsertarDatosCSVbis(tablaFinal))
+                {
+                    MessageBox.Show($"Datos insertados correctamente. Registros procesados: {tablaFinal.Rows.Count}",
+                                  "Éxito", MessageBoxButton.OK, MessageBoxImage.Information);
+
+                    // ❌ Registro de error (inserción fallida)
+                    var parametros = new Dictionary<string, object>
+           {
+               { "@fecha", DateTime.Now },
+               { "@actividad", $"2A. Importación correcta estado actual Marketplace: {Path.GetFileName(archivoCSVPath)}" },
+               { "@paso", "Considere revisar los datos. Al terminar, pulsa en Totalizar Saldos." }
+           };
+
+                    BaseDeDatos.EjecutarQueryIncidencia(
+                        "INSERT INTO actividad_usuarios (fecha_actividad_usuario, actividad, siguiente_paso) VALUES (@fecha, @actividad, @paso)",
+                        parametros
+                    );
+                    CargarProductos();
+                    ActualizarTotalRegistros();
+                    BtnImportarMKP.IsEnabled = false;
+                    BtnImportarMKP.Content = "Datos previamente importados.";
+                    Main.ActualizarUltimaActividad();
+
+                }
+                else
+                {
+                    MessageBox.Show("Error al insertar datos en la base de datos.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    // ❌ Registro de error (inserción fallida)
+                    var parametros = new Dictionary<string, object>
+           {
+               { "@fecha", DateTime.Now },
+               { "@actividad", $"2A. Inserción fallida de Estado Actual MKP: {Path.GetFileName(archivoCSVPath)}" },
+               { "@paso", "Revise la conexión. Reinicie la aplicación." }
+           };
+
+                    BaseDeDatos.EjecutarQueryIncidencia(
+                        "INSERT INTO actividad_usuarios (fecha_actividad_usuario, actividad, siguiente_paso) VALUES (@fecha, @actividad, @paso)",
+                        parametros
+                    );
+                    Main.ActualizarUltimaActividad();
+
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al procesar el archivo: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                // ❌ Registro de error (inserción fallida)
+                var parametros = new Dictionary<string, object>
+           {
+               { "@fecha", DateTime.Now },
+               { "@actividad", $"2A. Inserción fallida de Estado Actual MKP: {Path.GetFileName(archivoCSVPath)}" },
+               { "@paso", "Revise formato, codificación, contenido o separadores del archivo de texto CSV." }
+           };
+
+                BaseDeDatos.EjecutarQueryIncidencia(
+                    "INSERT INTO actividad_usuarios (fecha_actividad_usuario, actividad, siguiente_paso) VALUES (@fecha, @actividad, @paso)",
+                    parametros
+                );
+                Main.ActualizarUltimaActividad();
+
+            }
+        }
 
         /*
 private void BtnAgregar_Click(object sender, RoutedEventArgs e)
@@ -255,8 +401,76 @@ private void BtnAgregar_Click(object sender, RoutedEventArgs e)
 
         private void UnirYSumarDatos(object sender, RoutedEventArgs e)
         {
-            BaseDeDatos.UnirYSumar();
-            CargarProductos();
+            int totalTablaTemporal = BaseDeDatos.ObtenerTotalRegistrosTablaTemporal();
+            int totalTablaMKP = BaseDeDatos.ObtenerTotalRegistrosTablaMKP();
+
+            if (totalTablaTemporal == totalTablaMKP)
+            {
+                MessageBox.Show("Aún no se han importado los saldos del Marketplace. \nRegistros en Nuevas Convos: "+totalTablaTemporal+ ". \nRegistros en Tabla MKP: "+totalTablaMKP+"." ,
+                "Advertencia",
+                MessageBoxButton.OK,
+                MessageBoxImage.Warning);
+                return;
+            }
+
+
+
+           /* MessageBoxResult confirmacion = MessageBox.Show("¿Está seguro de que desea sumar los puntos? \nRegistros en Nuevas Convos: " + totalTablaTemporal + ". \nRegistros en Tabla MKP: " + totalTablaMKP + ".",
+                                         "Confirmar unión de datos.",
+                                         MessageBoxButton.YesNo,
+                                         MessageBoxImage.Warning);*/
+            MessageBoxResult confirmacion = MessageBox.Show("¿Está seguro de que desea totalizar los saldos?",
+                                         "Confirmar unión de datos.",
+                                         MessageBoxButton.YesNo,
+                                         MessageBoxImage.Warning);
+
+
+            if (confirmacion == MessageBoxResult.Yes)
+            {
+
+                BaseDeDatos.UnirYSumar();
+                CargarProductos();
+                BaseDeDatos.EliminarVaciosMKPExportar();
+                ActualizarTotalRegistros();
+                // ❌ Registro de error (inserción fallida)
+                var parametros = new Dictionary<string, object>
+           {
+               { "@fecha", DateTime.Now },
+               { "@actividad", $"2B. Unión y suma de datos correcta." },
+               { "@paso", "Pulse 3A hasta vaciar la tabla. Luego importe los archivos en el Marketplace. Entonces, pulse en Mover Nuevas Convos a BBDDGlobal." }
+           };
+
+                BaseDeDatos.EjecutarQueryIncidencia(
+                    "INSERT INTO actividad_usuarios (fecha_actividad_usuario, actividad, siguiente_paso) VALUES (@fecha, @actividad, @paso)",
+                    parametros
+                );
+                Main.ActualizarUltimaActividad();
+                Main.IrAModificar();
+
+            }
+            else
+            {
+                MessageBox.Show("No se sumaron los puntos.", "Éxito", MessageBoxButton.OK, MessageBoxImage.Information);
+                // ❌ Registro de error (inserción fallida)
+                var parametros = new Dictionary<string, object>
+           {
+               { "@fecha", DateTime.Now },
+               { "@actividad", $"2B. Totalización de datos fallida." },
+               { "@paso", "Revise la conexión. Reinicie la aplicación." }
+           };
+
+                BaseDeDatos.EjecutarQueryIncidencia(
+                    "INSERT INTO actividad_usuarios (fecha_actividad_usuario, actividad, siguiente_paso) VALUES (@fecha, @actividad, @paso)",
+                    parametros
+                );
+
+                Main.ActualizarUltimaActividad();
+
+
+            }
+
+
+
 
         }
 

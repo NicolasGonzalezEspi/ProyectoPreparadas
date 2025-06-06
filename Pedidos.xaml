@@ -5,7 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:trabajoFinalInterfaces"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="1080" d:DesignWidth="1920"
       Title="Pedidos">
     <Page.Resources>
         <ResourceDictionary>
@@ -16,21 +16,24 @@
         </ResourceDictionary>
     </Page.Resources>
     <Grid Background="#34485e" >
-        <TextBlock Text="Importar Marketplace" 
+        <TextBlock Text="Pedidos" 
             FontSize="20" FontWeight="Bold" Foreground="White"
             HorizontalAlignment="Left" VerticalAlignment="Top"
-            Margin="10,10,0,0"/>
+            Margin="20,10,0,0"/>
         <DataGrid x:Name="dgProductos" Style="{StaticResource CustomDataGridStyle}" 
-            AutoGenerateColumns="False" 
-            IsReadOnly="True"
-               Margin="20, 65, 20, 20">
-
+          AutoGenerateColumns="False" CopyingRowClipboardContent="dgProductos_CopyingRowClipboardContent"
+          IsReadOnly="True"
+          Margin="20, 123, 20, 20">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="ID Pedido MK" Binding="{Binding id_pedido_mk}" Width="*" />
-                <DataGridTextColumn Header="Fecha Pedido" Binding="{Binding fecha_Pedido}" Width="*" />
-                <DataGridTextColumn Header="ID Usuario" Binding="{Binding idUsuario}" Width="*" />
-                <DataGridTextColumn Header="Dirección" Binding="{Binding direccion}" Width="*" />
-                <DataGridTextColumn Header="Nota Envío" Binding="{Binding nota_envio}" Width="*" />
+                <DataGridTextColumn Header="Fecha Pedido" Binding="{Binding fecha_pedido}" Width="*" />
+                <DataGridTextColumn Header="Nombre Completo" Binding="{Binding nombre_completo}" Width="*" />
+                <DataGridTextColumn Header="Dirección"  Binding="{Binding direccion}" Width="*" />
+                <DataGridTextColumn Header="Cod. Postal" Binding="{Binding codigo_postal}" Width="*" />
+                <DataGridTextColumn Header="Ciudad" Binding="{Binding ciudad}" Width="*" />
+                <DataGridTextColumn Header="Provincia" Binding="{Binding provincia}" Width="*" />
+                <DataGridTextColumn Header="ID Usuario" Visibility="Collapsed" Binding="{Binding idUsuario}" Width="*" />
+                <DataGridTextColumn Header="Observaciones" Binding="{Binding nota_envio}" Width="*" />
                 <DataGridTextColumn Header="Teléfono" Binding="{Binding telefono}" Width="*" />
                 <DataGridTextColumn Header="Email" Binding="{Binding email}" Width="*" />
                 <DataGridTextColumn Header="SKU" Binding="{Binding SKU}" Width="*" />
@@ -38,18 +41,127 @@
                 <DataGridTextColumn Header="Unidades" Binding="{Binding uds}" Width="*" />
                 <DataGridTextColumn Header="Nombre Artículo" Binding="{Binding nombre_articulo}" Width="*" />
                 <DataGridTextColumn Header="Puntos" Binding="{Binding puntosg}" Width="*" />
-                <DataGridTextColumn Header="Categoría" Binding="{Binding categoria}" Width="*" />
+                <DataGridTextColumn Header="Modelo" Binding="{Binding modelo}" Width="*" />
                 <DataGridTextColumn Header="Estado Pedido" Binding="{Binding estado_pedido}" Width="*" />
-                <DataGridTextColumn Header="Agencia Transporte" Binding="{Binding agencia_transporte}" Width="*" />
                 <DataGridTextColumn Header="Fecha Gestión" Binding="{Binding fecha_gestion}" Width="*" />
+                <DataGridTemplateColumn Header="Tracking" Width="*">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock>
+                <Hyperlink NavigateUri="{Binding tracking}" RequestNavigate="Hyperlink_RequestNavigate">
+                    <TextBlock Text="{Binding tracking}" />
+                </Hyperlink>
+            </TextBlock>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
                 <DataGridTextColumn Header="Fecha Inicio Tránsito" Binding="{Binding fecha_inicio_transito}" Width="*" />
                 <DataGridTextColumn Header="Fecha Entrega" Binding="{Binding fecha_entrega_alumna}" Width="*" />
-                <DataGridTextColumn Header="Factura DMI" Binding="{Binding facturadmi_snlosllanos}" Width="*" />
-                <DataGridTextColumn Header="Importe sin IVA" Binding="{Binding importe_sin_iva}" Width="*" />
-                <DataGridTextColumn Header="Doc. Incidencia" Binding="{Binding doc_incidencia}" Width="*" />
+                <DataGridTextColumn Header="Fact/SN" Binding="{Binding facturadmi_snlosllanos}" Width="*" />
+                <DataGridTextColumn Header="Fecha Factura" Binding="{Binding fecha_factura}" Width="*" />
+                <DataGridTextColumn Header="Importe sin IVA" Binding="{Binding factura_sin_iva}" Width="*" />
+                <DataGridTextColumn Header="Abono" Binding="{Binding abono}" Width="*" />
+                <DataGridTextColumn Header="Fecha Abono" Binding="{Binding fecha_abono}" Width="*" />
+                <DataGridTextColumn Header="Abono sin IVA" Binding="{Binding abono_sin_iva}" Width="*" />
                 <DataGridTextColumn Header="Info. Incidencia" Binding="{Binding info_incidencia}" Width="*" />
             </DataGrid.Columns>
         </DataGrid>
+
+        <ComboBox x:Name="filtrarPor"
+          HorizontalAlignment="Left"
+          VerticalAlignment="Top"
+          Margin="214,74,0,0"
+          Height="28"
+          Width="110"
+          SelectionChanged="filtrarPor_SelectionChanged" FontSize="16" >
+            <ComboBoxItem Content="Buscar por:" IsSelected="True"/>
+            <ComboBoxItem Content="IdPedido"/>
+            <ComboBoxItem Content="Nombre"/>
+            <ComboBoxItem Content="Dirección"/>
+            <ComboBoxItem Content="Email"/>
+            <ComboBoxItem Content="Nº Factura"/>
+            <ComboBoxItem Content="SN"/>
+        </ComboBox>
+
+
+
+        <Button Style="{StaticResource PageButtonStyle2}" Content="Importar nuevos Pedidos"  HorizontalAlignment="Left"  Margin="120,21,0,0" VerticalAlignment="Top" Height="30" Width="185" Click="BtnSeleccionarArchivoCSVClick"/>
+        <Button Style="{StaticResource PageButtonStyle1}" Content="Editar Dirección"   HorizontalAlignment="Right"  Margin="0,21,332,0" VerticalAlignment="Top" Height="30" Width="142" Click="EditarDireccion"/>
+        <Button Style="{StaticResource PageButtonStyle1}" Content="Editar Incidencia"   HorizontalAlignment="Right"  Margin="0,21,20,0" VerticalAlignment="Top" Height="30" Width="142" Click="CrearIncidencia"/>
+        <!-- <CheckBox x:Name="chkVistaOptimizada"
+          Content="Vista Optimizada"
+          IsChecked="True"
+          Checked="CheckBox_Checked"
+          Unchecked="CheckBox_Unchecked"
+          Margin="124,75,0,0"
+          HorizontalAlignment="Left"
+          VerticalAlignment="Top"
+          Foreground="White">
+            <CheckBox.LayoutTransform>
+                <ScaleTransform ScaleX="1.5" ScaleY="1.5"/>
+            </CheckBox.LayoutTransform>
+        </CheckBox>
+         -->
+
+        <Button Style="{StaticResource PageButtonStyle2}" Content="Exportar DMI"  HorizontalAlignment="Left"  Margin="318,21,0,0" VerticalAlignment="Top" Height="30" Width="92" Click="ExportarCSVaAPI"/>
+        <Button Style="{StaticResource PageButtonStyle2}" Content="Exportar Solutia"  HorizontalAlignment="Left"  Margin="424,21,0,0" VerticalAlignment="Top" Height="30" Width="114" Click="ExportarCSVaAPIv2"/>
+        <Button Style="{StaticResource PageButtonStyle1}" Content="Factura/SN" Visibility="Collapsed"  HorizontalAlignment="Right"  Margin="0,52,699,0" VerticalAlignment="Top" Height="30" Width="142" Click="Factura_SN"/>
+        <ComboBox x:Name="filtrarPorV2"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Margin="350,74,0,0"
+            Height="28"
+            Width="110"
+            SelectionChanged="filtrarPor_SelectionChangedV2" FontSize="16" >
+            <ComboBoxItem Content="Filtrar por:" IsSelected="True"/>
+            <ComboBoxItem Content="DMI"/>
+            <ComboBoxItem Content="Solutia"/>
+            <ComboBoxItem Content="Con SN"/>
+            <ComboBoxItem Content="Con Nº Fact"/>
+            <ComboBoxItem Content="Sin SN/NºFact"/>
+            <ComboBoxItem Content="Mostrar Todos"/>
+            
+            
+        </ComboBox>
+        <ComboBox x:Name="Vista_Por"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Margin="20,73,0,0"
+            Height="28"
+            Width="169"
+            SelectionChanged="Vista_SelectionChanged" FontSize="16" >
+            <ComboBoxItem Content="Vista Optimizada" IsSelected="True"/>
+            <ComboBoxItem Content="Vista Tracking"/>
+            <ComboBoxItem Content="Vista Factura/Abono"/>
+            <ComboBoxItem Content="Vista Dirección"/>
+            <ComboBoxItem Content="Vista Completa"/>
+        </ComboBox>
+        <Button Style="{StaticResource PageButtonStyle1}" Content="Añadir" Visibility="Collapsed"  HorizontalAlignment="Right"  Margin="0,21,331,0" VerticalAlignment="Top" Height="30" Width="142" Click="EditarDireccion"/>
+        <Button Style="{StaticResource PageButtonStyle1}" Content="Añadir Abono"   HorizontalAlignment="Right"  Margin="0,73,20,0" VerticalAlignment="Top" Height="30" Width="142" Click="CumplimentarAbono"/>
+        <Button Style="{StaticResource PageButtonStyle1}" Content="Añadir Tracking"   HorizontalAlignment="Right"  Margin="0,73,173,0" VerticalAlignment="Top" Height="30" Width="142" Click="CumplimentarTracking"/>
+        <Button Style="{StaticResource PageButtonStyle1}" Content="Añadir Factura"   HorizontalAlignment="Right"  Margin="0,73,332,0" VerticalAlignment="Top" Height="30" Width="142" Click="AnadirFactura"/>
+        <ComboBox x:Name="Cambiar_Estado"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Margin="488,74,0,0"
+            Height="28"
+            Width="141"
+            SelectionChanged="CambiarEstado_SelectionChanged" FontSize="16" >
+            <ComboBoxItem Content="Cambiar Estado" IsSelected="True" Tag="NoNotify"/>
+            <ComboBoxItem Content="Procesando"/>
+            <ComboBoxItem Content="Gestionado"/>
+            <ComboBoxItem Content="En tránsito"/>
+            <ComboBoxItem Content="Incidencia" Visibility="Collapsed"/>
+            <ComboBoxItem Content="Entregado"/>
+            <ComboBoxItem Content="Facturado"/>
+            <ComboBoxItem Content="Cancelado"/>
+            <ComboBoxItem Content="Reembolsado" Visibility="Collapsed"/>
+        </ComboBox>
+        <Button Style="{StaticResource PageButtonStyle1}" Content="Duplicar Pedido (R)"   HorizontalAlignment="Right"  Margin="0,21,173,0" VerticalAlignment="Top" Height="30" Width="142" Click="DuplicarPedido"/>
+        <Button Style="{StaticResource PageButtonStyle1}" Content="Añadir SN"   HorizontalAlignment="Right"  Margin="0,73,487,0" VerticalAlignment="Top" Height="30" Width="142" Click="Anadir_SN"/>
+        <Button Style="{StaticResource PageButtonStyle1}" Content="Tracking y SN → Excel"   HorizontalAlignment="Right"  Margin="0,21,487,0" VerticalAlignment="Top" Height="30" Width="151" Click="AnadirTrackingsYSNExcel"/>
+
+
 
     </Grid>
 </Page>

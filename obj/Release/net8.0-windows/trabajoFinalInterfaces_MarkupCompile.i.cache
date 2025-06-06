@@ -10,11 +10,11 @@ none
 false
 TRACE;RELEASE;NET;NET8_0;NETCOREAPP;WINDOWS;WINDOWS7_0;NET5_0_OR_GREATER;NET6_0_OR_GREATER;NET7_0_OR_GREATER;NET8_0_OR_GREATER;NETCOREAPP3_0_OR_GREATER;NETCOREAPP3_1_OR_GREATER;WINDOWS7_0_OR_GREATER
 C:\Users\NicolasGonzalezEspin\Desktop\trabajo vedruna interfaces crud\trabajoFinalInterfaces\trabajoFinalInterfaces\App.xaml
-8-1508419487
-
-131651647886
-214-71173091
-Agregar.xaml;Borrar.xaml;Dictionary1.xaml;Inicio.xaml;Main.xaml;MainWindow.xaml;Modificar.xaml;Pedidos.xaml;
+161666031994
+2-1125121450
+21-1633480852
+217-20487580
+Agregar.xaml;Borrar.xaml;CrearAbono.xaml;CrearDireccion.xaml;CrearFactura.xaml;CrearIncidencia.xaml;CrearProducto.xaml;CrearTracking.xaml;Dictionary1.xaml;Incidencias.xaml;Inicio.xaml;Main.xaml;MainWindow.xaml;Modificar.xaml;Pedidos.xaml;Productos.xaml;
 
 False
 

@@ -15,7 +15,6 @@ namespace trabajoFinalInterfaces
                 Main ventanaPrincipal = new Main();
                 ventanaPrincipal.Show();
                 this.Close();
-           
         }
 
     }

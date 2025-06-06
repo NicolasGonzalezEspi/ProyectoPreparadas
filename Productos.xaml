@@ -5,7 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:trabajoFinalInterfaces"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="900" d:DesignWidth="1600"
       Title="Productos">
     <Page.Resources>
         <ResourceDictionary>
@@ -16,40 +16,27 @@
         </ResourceDictionary>
     </Page.Resources>
     <Grid Background="#34485e" >
-        <TextBlock Text="Pedidos" 
+        <TextBlock Text="Productos" 
             FontSize="20" FontWeight="Bold" Foreground="White"
             HorizontalAlignment="Left" VerticalAlignment="Top"
             Margin="20,10,0,0"/>
+        <Button Style="{StaticResource PageButtonStyle1}" Content="Dar de Alta"   HorizontalAlignment="Right"  Margin="0,21,485,0" VerticalAlignment="Top" Height="30" Width="142" Click="DarDeAlta"/>
+        <Button Style="{StaticResource PageButtonStyle1}" Content="Dar de Baja"   HorizontalAlignment="Right"  Margin="0,21,320,0" VerticalAlignment="Top" Height="30" Width="142" Click="DarDeBaja"/>
+
         <DataGrid x:Name="dgProductos" Style="{StaticResource CustomDataGridStyle}" 
       AutoGenerateColumns="False" 
       IsReadOnly="True"
          Margin="20, 65, 20, 20">
 
             <DataGrid.Columns>
-                <DataGridTextColumn Header="ID Pedido MK" Binding="{Binding id_pedido_mk}" Width="*" />
-                <DataGridTextColumn Header="Fecha Pedido" Binding="{Binding fecha_Pedido}" Width="*" />
-                <DataGridTextColumn Header="ID Usuario" Binding="{Binding idUsuario}" Width="*" />
-                <DataGridTextColumn Header="Dirección" Binding="{Binding direccion}" Width="*" />
-                <DataGridTextColumn Header="Nota Envío" Binding="{Binding nota_envio}" Width="*" />
-                <DataGridTextColumn Header="Teléfono" Binding="{Binding telefono}" Width="*" />
-                <DataGridTextColumn Header="Email" Binding="{Binding email}" Width="*" />
-                <DataGridTextColumn Header="SKU" Binding="{Binding SKU}" Width="*" />
-                <DataGridTextColumn Header="Proveedor" Binding="{Binding proveedor}" Width="*" />
-                <DataGridTextColumn Header="Unidades" Binding="{Binding uds}" Width="*" />
-                <DataGridTextColumn Header="Nombre Artículo" Binding="{Binding nombre_articulo}" Width="*" />
-                <DataGridTextColumn Header="Puntos" Binding="{Binding puntosg}" Width="*" />
-                <DataGridTextColumn Header="Categoría" Binding="{Binding categoria}" Width="*" />
-                <DataGridTextColumn Header="Estado Pedido" Binding="{Binding estado_pedido}" Width="*" />
-                <DataGridTextColumn Header="Agencia Transporte" Binding="{Binding agencia_transporte}" Width="*" />
-                <DataGridTextColumn Header="Fecha Gestión" Binding="{Binding fecha_gestion}" Width="*" />
-                <DataGridTextColumn Header="Fecha Inicio Tránsito" Binding="{Binding fecha_inicio_transito}" Width="*" />
-                <DataGridTextColumn Header="Fecha Entrega" Binding="{Binding fecha_entrega_alumna}" Width="*" />
-                <DataGridTextColumn Header="Factura DMI" Binding="{Binding facturadmi_snlosllanos}" Width="*" />
-                <DataGridTextColumn Header="Importe sin IVA" Binding="{Binding importe_sin_iva}" Width="*" />
-                <DataGridTextColumn Header="Doc. Incidencia" Binding="{Binding doc_incidencia}" Width="*" />
-                <DataGridTextColumn Header="Info. Incidencia" Binding="{Binding info_incidencia}" Width="*" />
+                <DataGridTextColumn Header="SKU" Binding="{Binding id_producto}" Width="*" />
+                <DataGridTextColumn Header="Nombre Producto" Binding="{Binding nombre_producto}" Width="*" />
+                <DataGridTextColumn Header="Modelo" Binding="{Binding modelo}" Width="*" />
+                <DataGridTextColumn Header="Puntos" Binding="{Binding puntos}" Width="*" />
+                <DataGridTextColumn Header="Estado" Binding="{Binding estado}" Width="*" />
             </DataGrid.Columns>
         </DataGrid>
+        <Button Style="{StaticResource PageButtonStyle1}" Content="Crear Producto"   HorizontalAlignment="Left"  Margin="150,21,0,0" VerticalAlignment="Top" Height="30" Width="142" Click="CrearProductoMKP"/>
 
     </Grid>
 </Page>

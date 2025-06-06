@@ -13,7 +13,7 @@ using System.IO;
 using CsvHelper;
 using CsvHelper.Configuration;
 using System.Text;
-
+ 
 
 
 namespace trabajoFinalInterfaces
@@ -27,6 +27,7 @@ namespace trabajoFinalInterfaces
         {
             InitializeComponent();
             CargarProductos();
+            ActualizarTotalRegistros();
         }
 
         private void BtnSeleccionarArchivoClick(object sender, RoutedEventArgs e)
@@ -159,6 +160,8 @@ namespace trabajoFinalInterfaces
                     {
                         MessageBox.Show("Datos insertados correctamente en la base de datos.", "Éxito", MessageBoxButton.OK, MessageBoxImage.Information);
                         CargarProductos();
+                        ActualizarTotalRegistros();
+
                     }
                     else
                     {
@@ -258,6 +261,7 @@ namespace trabajoFinalInterfaces
                 {
                     MessageBox.Show("Datos volcados correctamente. ", "Éxito", MessageBoxButton.OK, MessageBoxImage.Information);
                     CargarProductos();
+                    ActualizarTotalRegistros();
                     txtProductoBorrar.Clear();
                 }
                 else
@@ -322,7 +326,6 @@ namespace trabajoFinalInterfaces
             new DataColumn("tablet", typeof(string)),
             new DataColumn("puntos", typeof(int))
                 });
-
                 var config = new CsvConfiguration(CultureInfo.InvariantCulture)
                 {
                     Encoding = Encoding.GetEncoding(1252), // Codificación Windows-1252 para ANSI
@@ -354,16 +357,16 @@ namespace trabajoFinalInterfaces
                         nuevaFila["fecha_solicitud"] = (csv.GetField(7));
                         nuevaFila["estado_inscripcion"] = csv.GetField(8) ?? "";
                         nuevaFila["tipo_inscripcion"] = csv.GetField(9) ?? "";
-                        nuevaFila["estado_matriculacion"] = csv.GetField(10) ?? "";
-                        nuevaFila["email"] = csv.GetField(11) ?? "";
-                        nuevaFila["telefono"] = csv.GetField(12) ?? "";
-                        nuevaFila["nivel_estudios"] = csv.GetField(13) ?? "";
-                        nuevaFila["sexo"] = csv.GetField(14) ?? "";
+                        nuevaFila["estado_matriculacion"] = csv.GetField(11) ?? "";
+                        nuevaFila["email"] = csv.GetField(12) ?? "";
+                        nuevaFila["telefono"] = csv.GetField(13) ?? "";
+                        nuevaFila["nivel_estudios"] = csv.GetField(14) ?? "";
+                        nuevaFila["sexo"] = csv.GetField(15) ?? "";
 
-                        nuevaFila["fecha_nacimiento"] = (csv.GetField(17));
-                        nuevaFila["dni"] = csv.GetField(18) ?? "";
-                        nuevaFila["situacion_laboral"] = csv.GetField(19) ?? "";
-                        nuevaFila["asistencia_remota"] = csv.GetField(20) ?? "";
+                        nuevaFila["fecha_nacimiento"] = (csv.GetField(18));
+                        nuevaFila["dni"] = csv.GetField(19) ?? "";
+                        nuevaFila["situacion_laboral"] = csv.GetField(20) ?? "";
+                        nuevaFila["asistencia_remota"] = csv.GetField(21) ?? "";
                         nuevaFila["tablet"] = csv.GetField(21) ?? "";
 
                         nuevaFila["puntos"] = int.TryParse(csv.GetField(22), out int puntos) ? puntos : 0;
@@ -376,16 +379,69 @@ namespace trabajoFinalInterfaces
                 {
                     MessageBox.Show("Datos insertados correctamente en la base de datos.", "Éxito", MessageBoxButton.OK, MessageBoxImage.Information);
                     BaseDeDatos.eliminarVaciosTemporal();
+                    /*
+                     *                     MessageBox.Show($"Datos insertados correctamente. Registros procesados: {tablaFinal.Rows.Count}",
+              "Éxito", MessageBoxButton.OK, MessageBoxImage.Information);
+                     */
                     CargarProductos();
+                    ActualizarTotalRegistros();
+
+
+                    // ✅ Registro de éxito
+                    var parametros = new Dictionary<string, object>
+            {
+                { "@fecha", DateTime.Now },
+                { "@actividad", $"1A. Importación correcta de convocatorias: {Path.GetFileName(archivoCSVPath)}. Registros: {tablaFinal.Rows.Count}" },
+                { "@paso", "Actualice datos de Puntos y Tablet. Importe nuevas convocatorias. Al terminar, pulsa en Pasar Datos a Formato MKP" }
+            };
+
+
+                    BaseDeDatos.EjecutarQueryIncidencia(
+                        "INSERT INTO actividad_usuarios (fecha_actividad_usuario, actividad, siguiente_paso) VALUES (@fecha, @actividad, @paso)",
+                        parametros
+                    );
+                    Main.ActualizarUltimaActividad();
+
+
                 }
                 else
                 {
                     MessageBox.Show("Error al insertar datos en la base de datos.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+
+                    // ❌ Registro de error (inserción fallida)
+                    var parametros = new Dictionary<string, object>
+            {
+                { "@fecha", DateTime.Now },
+                { "@actividad", $"1A. Inserción fallida de Nueva Convocatoria: {Path.GetFileName(archivoCSVPath)}" },
+                { "@paso", "Revise formato, codificación, contenido o separadores del archivo de texto CSV." }
+            };
+
+                    BaseDeDatos.EjecutarQueryIncidencia(
+                        "INSERT INTO actividad_usuarios (fecha_actividad_usuario, actividad, siguiente_paso) VALUES (@fecha, @actividad, @paso)",
+                        parametros
+                    );
+                    Main.ActualizarUltimaActividad();
+
                 }
             }
             catch (Exception ex)
             {
                 MessageBox.Show($"Error al procesar el archivo: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                // ❌ Registro de error (inserción fallida)
+                var parametros = new Dictionary<string, object>
+            {
+                { "@fecha", DateTime.Now },
+                { "@actividad", $"1A. Inserción fallida de Nueva Convocatoria: {Path.GetFileName(archivoCSVPath)}" },
+                { "@paso", "Revise formato, codificación, contenido o separadores del archivo de texto CSV." }
+            };
+
+                BaseDeDatos.EjecutarQueryIncidencia(
+                    "INSERT INTO actividad_usuarios (fecha_actividad_usuario, actividad, siguiente_paso) VALUES (@fecha, @actividad, @paso)",
+                    parametros
+                );
+                Main.ActualizarUltimaActividad();
+
+
             }
         }
         private string ConvertirFecha(string fecha)
@@ -397,25 +453,69 @@ namespace trabajoFinalInterfaces
             }
             return "";
         }
-
+        private void ActualizarTotalRegistros()
+        {
+            int totalRegistros = BaseDeDatos.ObtenerTotalRegistrosTablaTemporal();
+            txtTotalRegistros.Text = totalRegistros.ToString();
+        }
         private void Button_Click(object sender, RoutedEventArgs e)
         {
 
-            MessageBox.Show("Esto solo se debe hacer una vez por importación, si no, podría haber datos repetidos en la siguiente tabla",
-                "Advertencia",
-                MessageBoxButton.OK,
-                MessageBoxImage.Warning);
 
-            MessageBoxResult result = MessageBox.Show("¿Está seguro de que quiere hacerlo?",
+            MessageBoxResult result = MessageBox.Show("¿Convertir convocatorias a formato Marketplace?",
                                         "Confirmación",
                                         MessageBoxButton.YesNo,
                                         MessageBoxImage.Question);
 
             if (result == MessageBoxResult.Yes)
             {
-                Console.WriteLine("El usuario ha confirmado que quiere proceder");
+     
                 // Aquí iría el código para cuando el usuario dice Sí
-                BaseDeDatos.VolcarDatosMKP();
+               // BaseDeDatos.VolcarDatosMKP();
+               
+
+
+                bool eliminado = BaseDeDatos.VolcarDatosMKP();
+                if (eliminado)
+                {
+                    MessageBox.Show("Datos volcados correctamente. ", "Éxito", MessageBoxButton.OK, MessageBoxImage.Information);
+                    var parametros = new Dictionary<string, object>
+            {
+                { "@fecha", DateTime.Now },
+                { "@actividad", $"1B. Datos copiados a Formato MKP." },
+                { "@paso", "Importe el estado actual del Marketplace mediante un archivo de texto CSV." }
+            };
+
+                    BaseDeDatos.EjecutarQueryIncidencia(
+                        "INSERT INTO actividad_usuarios (fecha_actividad_usuario, actividad, siguiente_paso) VALUES (@fecha, @actividad, @paso)",
+                        parametros
+                    );
+                    Main.ActualizarUltimaActividad();
+                    Main.IrAAgregar();
+
+
+
+
+                }
+                else
+                {
+                    MessageBox.Show("No se pudo volcar...", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+
+                    var parametros = new Dictionary<string, object>
+            {
+                { "@fecha", DateTime.Now },
+                { "@actividad", $"1B. El Volcado de datos de Nuevas Convos a TablaMKP no sucedió." },
+                { "@paso", "Revise la conexión. Reinicie la aplicación." }
+            };
+
+                    BaseDeDatos.EjecutarQueryIncidencia(
+                        "INSERT INTO actividad_usuarios (fecha_actividad_usuario, actividad, siguiente_paso) VALUES (@fecha, @actividad, @paso)",
+                        parametros
+                    );
+
+                    Main.ActualizarUltimaActividad();
+
+                }
 
             }
             else
@@ -425,5 +525,49 @@ namespace trabajoFinalInterfaces
             }
 
         }
+
+        private void TabletNoPuntos40(object sender, RoutedEventArgs e)
+        {
+            if (dgProductos.SelectedItems.Count == 0)
+            {
+                MessageBox.Show("No hay ningún registro seleccionado.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+
+            foreach (var item in dgProductos.SelectedItems)
+            {
+                DataRowView filaSeleccionada = (DataRowView)item;
+                String codigoconvocatoria = filaSeleccionada["codigoconvocatoria"].ToString();
+                String dni = filaSeleccionada["dni"].ToString();
+
+                BaseDeDatos.EjecutarUpdateIncidencia(
+                    $"UPDATE tablatemporal SET tablet = 'No', puntos = 40 WHERE codigo_convocatoria = '{codigoconvocatoria}' AND dni = '{dni}';"
+                );
+            }
+
+            CargarProductos();
+        }
+        private void TabletSIPuntos0(object sender, RoutedEventArgs e)
+        {
+            if (dgProductos.SelectedItems.Count == 0)
+            {
+                MessageBox.Show("No hay ningún registro seleccionado.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+
+            foreach (var item in dgProductos.SelectedItems)
+            {
+                DataRowView filaSeleccionada = (DataRowView)item;
+                String codigoconvocatoria = filaSeleccionada["codigoconvocatoria"].ToString();
+                String dni = filaSeleccionada["dni"].ToString();
+
+                BaseDeDatos.EjecutarUpdateIncidencia(
+                    $"UPDATE tablatemporal SET tablet = 'Sí', puntos = 0 WHERE codigo_convocatoria = '{codigoconvocatoria}' AND dni = '{dni}';"
+                );
+            }
+
+            CargarProductos();
+        }
+
     }
 }

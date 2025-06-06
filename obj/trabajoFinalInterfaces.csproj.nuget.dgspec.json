@@ -1,24 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\NicolasGonzalezEspin\\Desktop\\trabajo vedruna interfaces crud\\trabajoFinalInterfaces\\trabajoFinalInterfaces\\trabajoFinalInterfaces.csproj": {}
+    "C:\\Users\\piani\\Desktop\\proyecto final v2\\trabajoFinalInterfaces - copia\\trabajoFinalInterfaces.csproj": {}
   },
   "projects": {
-    "C:\\Users\\NicolasGonzalezEspin\\Desktop\\trabajo vedruna interfaces crud\\trabajoFinalInterfaces\\trabajoFinalInterfaces\\trabajoFinalInterfaces.csproj": {
+    "C:\\Users\\piani\\Desktop\\proyecto final v2\\trabajoFinalInterfaces - copia\\trabajoFinalInterfaces.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\NicolasGonzalezEspin\\Desktop\\trabajo vedruna interfaces crud\\trabajoFinalInterfaces\\trabajoFinalInterfaces\\trabajoFinalInterfaces.csproj",
+        "projectUniqueName": "C:\\Users\\piani\\Desktop\\proyecto final v2\\trabajoFinalInterfaces - copia\\trabajoFinalInterfaces.csproj",
         "projectName": "trabajoFinalInterfaces",
-        "projectPath": "C:\\Users\\NicolasGonzalezEspin\\Desktop\\trabajo vedruna interfaces crud\\trabajoFinalInterfaces\\trabajoFinalInterfaces\\trabajoFinalInterfaces.csproj",
-        "packagesPath": "C:\\Users\\NicolasGonzalezEspin\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\NicolasGonzalezEspin\\Desktop\\trabajo vedruna interfaces crud\\trabajoFinalInterfaces\\trabajoFinalInterfaces\\obj\\",
+        "projectPath": "C:\\Users\\piani\\Desktop\\proyecto final v2\\trabajoFinalInterfaces - copia\\trabajoFinalInterfaces.csproj",
+        "packagesPath": "C:\\Users\\piani\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\piani\\Desktop\\proyecto final v2\\trabajoFinalInterfaces - copia\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\NicolasGonzalezEspin\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\piani\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -26,6 +22,7 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -43,8 +40,7 @@
           "enableAudit": "true",
           "auditLevel": "low",
           "auditMode": "direct"
-        },
-        "SdkAnalysisLevel": "9.0.200"
+        }
       },
       "frameworks": {
         "net8.0-windows7.0": {
@@ -58,9 +54,25 @@
               "target": "Package",
               "version": "[33.0.1, )"
             },
+            "LiveCharts.Wpf": {
+              "target": "Package",
+              "version": "[0.9.7, )"
+            },
+            "Microsoft.Extensions.DependencyInjection.Abstractions": {
+              "target": "Package",
+              "version": "[9.0.4, )"
+            },
             "MySql.Data": {
               "target": "Package",
               "version": "[9.1.0, )"
+            },
+            "SSH.NET": {
+              "target": "Package",
+              "version": "[2025.0.0, )"
+            },
+            "iTextSharp": {
+              "target": "Package",
+              "version": "[5.5.13.4, )"
             }
           },
           "imports": [
@@ -82,7 +94,7 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.201/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.400/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

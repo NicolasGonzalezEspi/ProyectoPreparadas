@@ -23,7 +23,7 @@
          Margin="20,10,0,0"/>
         <DataGrid x:Name="dgProductos" Style="{StaticResource CustomDataGridStyle}" 
          AutoGenerateColumns="False" 
-         IsReadOnly="True"
+         IsReadOnly="False"
             Margin="20, 65, 20, 20">
             
             <DataGrid.Columns>
@@ -40,7 +40,7 @@
             </DataGrid.Columns>
         </DataGrid>
         <Button Style="{StaticResource PageButtonStyle1}" Content="Actualizar Incidencia" HorizontalAlignment="Left" Margin="533,21,0,0" VerticalAlignment="Top" Click="Actualizar_Incidencia" Width="150" Height="29"/>
-        <Button Style="{StaticResource PageButtonStyle1}" Content="Duplicar Incidencia (R)" HorizontalAlignment="Left" Margin="250,21,0,0" VerticalAlignment="Top" Width="167" Height="29" Click="Button_Click"/>
+        <Button Style="{StaticResource PageButtonStyle1}" Content="Duplicar Incidencia (R)" Visibility="Collapsed" HorizontalAlignment="Left" Margin="250,21,0,0" VerticalAlignment="Top" Width="167" Height="29" Click="DuplicarIncidenciaR"/>
 
     </Grid>
 </Page>

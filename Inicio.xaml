@@ -1,7 +1,8 @@
-﻿<Page x:Class="trabajoFinalInterfaces.Inicio"
+﻿<Page
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-      Title="Inicio">
+      xmlns:av="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="av" x:Class="trabajoFinalInterfaces.Inicio"
+      Title="Inicio" av:DesignHeight="900" av:DesignWidth="1600"  >
 
     <Page.Resources>
         <ResourceDictionary>
@@ -14,14 +15,15 @@
 
     <Grid Background="#34485e">
 
-        <!-- Texto "Northwind" en la parte superior izquierda -->
+       
 
         <TextBlock Text="BBDD Global" 
                    FontSize="20" FontWeight="Bold" Foreground="White"
                    HorizontalAlignment="Left" VerticalAlignment="Top"
-                   Margin="10,10,0,0"/>
+                   Margin="20,10,0,0"/>
 
-        <DataGrid x:Name="dgProductos" 
+        
+        <DataGrid x:Name="dgProductos" CopyingRowClipboardContent="dgProductos_CopyingRowClipboardContent"
           Style="{StaticResource CustomDataGridStyle}"
           AutoGenerateColumns="False" 
           IsReadOnly="True"
@@ -37,7 +39,8 @@
                 <DataGridTextColumn Header="apellidosg" Binding="{Binding apellidosg}" Width="*" />
                 <DataGridTextColumn Header="fecha_solicitudg" Binding="{Binding fechasolicitudg}" Width="*" />
                 <DataGridTextColumn Header="estado_inscripciong" Binding="{Binding estadoinscripciong}" Width="*" />
-                <DataGridTextColumn Header="tipo_inscripciong" Binding="{Binding tipoinscripciong}" Width="*" />
+                <!--    <DataGridTextColumn Header="tipo_inscripciong" Binding="{Binding tipoinscripciong}" Width="*" /> -->
+             
                 <DataGridTextColumn Header="estado_matriculaciong" Binding="{Binding estadomatriculaciong}" Width="*" />
                 <DataGridTextColumn Header="emailg" Binding="{Binding emailg}" Width="*" />
                 <DataGridTextColumn Header="telefonog" Binding="{Binding telefonog}" Width="*" />
@@ -57,7 +60,7 @@
             FontSize="16" Foreground="White"
             HorizontalAlignment="Left" Margin="155,30,0,0"
             VerticalAlignment="Top" Visibility="Collapsed"/>
-        <Button Style="{StaticResource PageButtonStyle1}" Content="Añadir Observación" HorizontalAlignment="Left" Margin="533,21,0,0" VerticalAlignment="Top" Click="Button_Click_2" Width="150" Height="29"/>
+        <Button Style="{StaticResource PageButtonStyle1}" Content="Añadir Observación" HorizontalAlignment="Left" Margin="290,21,0,0" VerticalAlignment="Top" Click="Button_Click_2" Width="150" Height="29"/>
 
 
         <ComboBox x:Name="cmbEstado"
@@ -66,18 +69,18 @@
               VerticalAlignment="Top"
               Margin="673,28,0,0"
               SelectionChanged="cmbEstado_SelectionChanged" Height="24" Width="29">
-            <ComboBoxItem>Procesando</ComboBoxItem>
-            <ComboBoxItem>Gestionando</ComboBoxItem>
-            <ComboBoxItem>Completado</ComboBoxItem>
+            <ComboBoxItem Content="Procesando"/>
+            <ComboBoxItem Content="Gestionando"/>
+            <ComboBoxItem Content="Completado"/>
         </ComboBox>
         <ComboBox x:Name="filtrarPor"
           HorizontalAlignment="Left"
           VerticalAlignment="Top"
           Margin="162,21,0,0"
           Height="27"
-          Width="99"
+          Width="110"
           SelectionChanged="filtrarPor_SelectionChanged" FontSize="16" >
-            <ComboBoxItem Content="Filtrar por:" IsSelected="True"/>
+            <ComboBoxItem Content="Buscar por:" IsSelected="True"/>
             <ComboBoxItem Content="DNI"/>
             <ComboBoxItem Content="Email"/>
             <ComboBoxItem Content="Cádiz"/>
@@ -86,15 +89,33 @@
 
 
 
+        <TextBlock Text="Total registros:" 
+   FontSize="18" Foreground="White"
+   HorizontalAlignment="Center" Margin="0,29,100,0"
+   VerticalAlignment="Top"/>
+        <TextBlock x:Name="txtTotalRegistros" Foreground="White"  FontSize="36" 
+   HorizontalAlignment="Center" Margin="0,10,-100,0" 
+   TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="80"/>
+
         <Button Style="{StaticResource PageButtonStyle2}"
         Content="Exportar Backup"
-        HorizontalAlignment="Left"
-        Margin="937,21,0,0"
+        HorizontalAlignment="Right"
+        Margin="0,21,335,110"
         VerticalAlignment="Top"
         Click="ExportarBackup"
         Width="118"
         Height="29"
         ToolTip="Guardar todos los registros que se muestran en pantalla en un archivo CSV. Almacenamiento a largo plazo de datos."/>
-        <Button Style="{StaticResource PageButtonStyle2}"  Content="Importar Backup" HorizontalAlignment="Left" Margin="1068,21,0,0"  VerticalAlignment="Top" Click="ImportarBackup" Height="29" Width="120" ToolTip="Carga todos los registros compatibles de un archivo CSV. Si la importación es correcta, muestra esos datos en pantalla."/>
+        <Button Style="{StaticResource PageButtonStyle2}"  Content="Importar Backup" HorizontalAlignment="Right" Margin="0,21,210,0"  VerticalAlignment="Top" Click="ImportarBackup" Height="29" Width="120" ToolTip="Carga todos los registros compatibles de un archivo CSV. Si la importación es correcta, muestra esos datos en pantalla."/>
+        <Button Style="{StaticResource PageButtonStyle2}"
+            Content="Borrar Tablas"
+            HorizontalAlignment="Right"
+            Margin="0,21,20,0"
+            VerticalAlignment="Top" Background="#A88C8C"
+
+            Click="BorrarTemporales"
+            Width="175"
+            Height="29"
+       />
     </Grid>
 </Page>

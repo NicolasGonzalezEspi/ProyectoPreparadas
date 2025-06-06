@@ -13,16 +13,17 @@
     </Page.Resources>
     <Grid Background="#34485e" >
 
-        <TextBlock Text="Formato Marketplace" 
+
+        <TextBlock Text="Formato MKP" 
                    FontSize="20" FontWeight="Bold" Foreground="White"
                    HorizontalAlignment="Left" VerticalAlignment="Top"
-                   Margin="10,10,0,0"/>
+                   Margin="20,10,0,0"/>
 
 
         <DataGrid x:Name="dgProductos"  Style="{StaticResource CustomDataGridStyle}" 
                   AutoGenerateColumns="False" 
                   IsReadOnly="True"
-                  Margin="20, 65, 20, 20"
+                  Margin="20, 65, 20, 20" Grid.ColumnSpan="2"
                  
                   >
 
@@ -36,11 +37,34 @@
                 <DataGridTextColumn Header="account_funds" Binding="{Binding accountfunds}" Width="*" />
             </DataGrid.Columns>
         </DataGrid>
-        <Button Content="Exportar a CSV (deprecado)" HorizontalAlignment="Left" Margin="215,17,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.205,-0.024" Click="ExportarCSV" Visibility="Collapsed" Background="CornflowerBlue" Width="158" Height="20"/>
+        <Button Content="Exportar a CSV (deprecado)" HorizontalAlignment="Left" Margin="4,17,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.205,-0.024" Click="ExportarCSV" Visibility="Collapsed" Background="CornflowerBlue" Width="158" Height="20" Grid.Column="1"/>
+<Button Style="{StaticResource PageButtonStyle2}" x:Name="BtnImportarMKP" 
+        Content="2A. Importar Saldos MKP (CSV)" 
+        ToolTip="Importar el estado actual del MKP: Usuarias y puntos" 
+        HorizontalAlignment="Left" Margin="187,21,0,0" VerticalAlignment="Top" 
+        Click="BtnSeleccionarArchivoCSVClickBis" Height="30" Width="220" Grid.Column="1"/>
 
-        <Button Style="{StaticResource PageButtonStyle2}"  Content="1. Importar Saldos MKP (CSV) " ToolTip="Importar el estado actual del MKP: Usuarias y puntos" HorizontalAlignment="Left" Margin="241,21,0,0" VerticalAlignment="Top" Click="BtnSeleccionarArchivoCSVClickBis" Height="30" Width="211"/>
+<Button Style="{StaticResource PageButtonStyle1}"  
+        Content="2B. Totalizar Saldos"  
+        ToolTip="A igual DNI, se obtiene el saldo actual sumándolo a las nuevas convocatorias. Los datos se volcarán a Importar Marketplace" 
+        HorizontalAlignment="Left" Margin="422,21,0,0" VerticalAlignment="Top" 
+        Click="UnirYSumarDatos" Width="214" Height="30" Grid.Column="1"/>
 
-        <Button Style="{StaticResource PageButtonStyle1}"  Content="2. Totalizar Saldos"  ToolTip="A igual DNI, se obtiene el saldo actual sumándolo a las nuevas convocatorias. Los datos se volcarán a Importar Marketplace" HorizontalAlignment="Left" Margin="474,21,0,0" VerticalAlignment="Top" Click="UnirYSumarDatos" Width="187" Height="30"/>
+        <TextBlock x:Name="txtTotalRegistros" Foreground="White"  FontSize="36" 
+            HorizontalAlignment="Left" Margin="771,10,0,0" 
+            TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="72">
+            <TextBlock.ToolTip>
+                <ToolTip Content="El número de registros que quedan por preparar."/>
+            </TextBlock.ToolTip>
+        </TextBlock>
+        <TextBlock Text="Total registros:" 
+            FontSize="18" Foreground="White"
+            HorizontalAlignment="Left" Margin="647,27,0,0"
+            VerticalAlignment="Top" Width="149">
+            <TextBlock.ToolTip>
+                <ToolTip Content="El número muestra el número de registros que quedan por preparar. Se irán volcando datos en bloques de 100-200 usuarias. "/>
+            </TextBlock.ToolTip>
+        </TextBlock>
 
     </Grid>
 </Page>

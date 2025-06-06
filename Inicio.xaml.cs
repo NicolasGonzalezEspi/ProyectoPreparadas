@@ -20,12 +20,35 @@ namespace trabajoFinalInterfaces
             InitializeComponent();
             CargarProductos();  //al iniciarse esta página, se muestran todos los productos y sus respectivas categorías
             //además, siempre que se haga una opción tipo crud, se llamará a este método para que se vea reflejado automáticamente.
+            ActualizarTotalRegistros();
+
+        }
+
+        private void ActualizarTotalRegistros()
+        {
+            int totalRegistros = BaseDeDatos.ObtenerTotalRegistrosBbddGlobal();
+            txtTotalRegistros.Text = totalRegistros.ToString();
         }
 
         private void CargarProductos()
         {
             DataTable productos = BaseDeDatos.MostrarBBDDGlobal(); // llamada a la función determinada de  baseDeDatos
             dgProductos.ItemsSource = productos.DefaultView; //volcamos los datos al datagrid (la tabla)
+        }
+        private void dgProductos_CopyingRowClipboardContent(object sender, DataGridRowClipboardEventArgs e)
+        {
+            var dataGrid = sender as DataGrid;
+            if (dataGrid == null)
+                return;
+
+            // Obtener la celda actual (seleccionada)
+            var currentCell = dataGrid.CurrentCell;
+            if (currentCell == null || currentCell.Column == null)
+                return;
+
+            // Filtrar las celdas para mantener solo la que está actualmente activa
+            e.ClipboardRowContent.RemoveAll(cell =>
+                cell.Column != currentCell.Column);
         }
 
         private void Button_Click()
@@ -79,7 +102,7 @@ namespace trabajoFinalInterfaces
 
                 if (resultado.Rows.Count > 0)
                 {
-                    MessageBox.Show("Datos encontr ados.", "Éxito", MessageBoxButton.OK, MessageBoxImage.Information);
+                    MessageBox.Show("Datos encontrados.", "Éxito", MessageBoxButton.OK, MessageBoxImage.Information);
 
                     // ✅ Corrección: Mostrar los datos obtenidos por email
                     dgProductos.ItemsSource = resultado.DefaultView;
@@ -177,6 +200,8 @@ namespace trabajoFinalInterfaces
                     }
 
                     CargarProductos(); // Refrescar datos
+                    ActualizarTotalRegistros();
+
                 }
             }
             else
@@ -339,6 +364,7 @@ namespace trabajoFinalInterfaces
                 if (BaseDeDatos.InsertarDatosCSVBackup(tablaFinal))
                 {
                     CargarProductos();
+                    ActualizarTotalRegistros();
                     MessageBox.Show($"Datos insertados correctamente. Registros procesados: {tablaFinal.Rows.Count}",
                                     "Éxito", MessageBoxButton.OK, MessageBoxImage.Information);
                 }
@@ -424,6 +450,7 @@ namespace trabajoFinalInterfaces
                     }
 
                     CargarProductos(); // Refrescar datos
+                    ActualizarTotalRegistros();
                 }
 
                 // Imprimir el estado seleccionado en la consola
@@ -452,9 +479,69 @@ namespace trabajoFinalInterfaces
                     case "Málaga":
                         FiltrarMalaga();
                         break;
+                    case "Buscar por:":
+                        CargarProductos();
+                        break;
                 }
             }
         }
+
+        private void BorrarTemporales(object sender, RoutedEventArgs e)
+        {
+            MessageBoxResult resultado = MessageBox.Show(
+                "¿Quieres borrar únicamente las tablas temporales? \nSi pulsas no, al añadir la contraseña, podrías borrar BBDD_Global.",
+                "Confirmar",
+                MessageBoxButton.YesNo,
+                MessageBoxImage.Question
+            );
+
+            if (resultado == MessageBoxResult.Yes)
+            {
+                bool exito = BaseDeDatos.VaciarTablasTemporales();
+
+                if (exito)
+                {
+                    MessageBox.Show("Las tablas temporales se vaciaron correctamente.", "Éxito", MessageBoxButton.OK, MessageBoxImage.Information);
+                }
+                else
+                {
+                    MessageBox.Show("Hubo un error al vaciar las tablas temporales.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+            } else
+            {
+                string contraseña = Microsoft.VisualBasic.Interaction.InputBox(
+                "Ingrese la contraseña con la que vaciar BBDD Global.",
+                "¿Cuál es la contraseña?",
+                ""
+            );
+                bool acierto = contraseña == "h,2.JcPAc";
+                if(acierto) {
+
+                   bool eliminado = BaseDeDatos.EliminarBBDDGlobal();
+
+                    if(eliminado) {
+                        MessageBox.Show("La tabla llamada BBDD Global fue vaciada.", "Éxito", MessageBoxButton.OK, MessageBoxImage.Information);
+                        CargarProductos();
+                        ActualizarTotalRegistros();
+
+                    }
+                    else
+                    {
+                        MessageBox.Show("Hubo un error al vaciar BBDDGlobal.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+
+                    }
+                } else
+                {
+                    MessageBox.Show("Contraseña Incorrecta. BBDD Global no fue borrada", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+
+                }
+
+
+
+
+            }
+        }
+
 
 
 

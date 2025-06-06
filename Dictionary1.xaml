@@ -3,20 +3,27 @@
 
     <Style TargetType="DataGrid" x:Key="CustomDataGridStyle">
         <Setter Property="Background" Value="#ECF0F1"/>
-        <!-- Fondo general -->
         <Setter Property="Foreground" Value="#2C3E50"/>
-        <!-- Texto oscuro -->
         <Setter Property="BorderBrush" Value="#CFDFE8"/>
-        <!-- Bordes -->
         <Setter Property="BorderThickness" Value="1"/>
         <Setter Property="RowBackground" Value="#F5F5F5"/>
-        <!-- Nuevo gris claro para filas impares -->
         <Setter Property="AlternatingRowBackground" Value="#FFFFFF"/>
-        <!-- Filas pares en blanco (se mantiene) -->
         <Setter Property="HorizontalGridLinesBrush" Value="#ECF0F1"/>
-        <!-- Líneas horizontales -->
         <Setter Property="VerticalGridLinesBrush" Value="#CFDFE8"/>
-        <!-- Líneas verticales -->
+
+        <!-- Estilo para las celdas (DataGridCell) -->
+        <Setter Property="CellStyle">
+            <Setter.Value>
+                <Style TargetType="DataGridCell">
+                    <Setter Property="FontSize" Value="17"/>
+                    <!-- Tamaño de letra aumentado -->
+                    <Setter Property="Padding" Value="5"/>
+                    <Setter Property="Foreground" Value="#2C3E50"/>
+                    <!-- Color de texto -->
+                    <Setter Property="Background" Value="Transparent"/>
+                </Style>
+            </Setter.Value>
+        </Setter>
     </Style>
 
     <!-- Estilo para los encabezados del DataGrid -->
@@ -30,6 +37,29 @@
     <Style x:Key="HubPrincipalButtonStyle1" TargetType="Button">
         <Setter Property="Background" Value="#1abc9c"/>
         <Setter Property="Foreground" Value="#f5f5f5"/>
+        <Setter Property="FontSize" Value="15.8"/>
+        <Setter Property="FontWeight" Value="Bold"/>
+        <Setter Property="Padding" Value="10,5"/>
+        <Setter Property="BorderBrush" Value="Transparent"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="Height" Value="50"/>
+        <Setter Property="Width" Value="200"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border Background="{TemplateBinding Background}" 
+                        BorderBrush="{TemplateBinding BorderBrush}" 
+                        BorderThickness="{TemplateBinding BorderThickness}"
+                        CornerRadius="10" Padding="{TemplateBinding Padding}">
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style x:Key="HubPrincipalButtonStyle3" TargetType="Button">
+        <Setter Property="Background" Value="#15a98c"/>
+        <Setter Property="Foreground" Value="#34485e"/>
         <Setter Property="FontSize" Value="15.8"/>
         <Setter Property="FontWeight" Value="Bold"/>
         <Setter Property="Padding" Value="10,5"/>
@@ -98,10 +128,10 @@
             </Setter.Value>
         </Setter>
     </Style>
-    <!-- Estilos para los botones de importacion  -->
+    <!-- Estilos para los botones de importacion 2C3E50  -->
     <Style x:Key="PageButtonStyle2" TargetType="Button">
         <Setter Property="Background" Value="#A9B3BC"/>
-        <Setter Property="Foreground" Value="#2C3E50"/>
+        <Setter Property="Foreground" Value="#FFFFFF"/>
         <Setter Property="FontSize" Value="15"/>
         <Setter Property="BorderBrush" Value="#A9B3BC"/>
         <Setter Property="BorderThickness" Value="1"/>
@@ -158,6 +188,20 @@
         <Setter Property="FontWeight" Value="Regular"/>
         <Setter Property="Foreground" Value="#ecf0f1"/>
         <Setter Property="TextWrapping" Value="Wrap"/>
+    </Style>
+
+    <!-- Estilo para ToolTips muy visibles -->
+    <Style TargetType="ToolTip">
+        <Setter Property="Background" Value="LightBlue"/>
+        <!-- Naranja intenso -->
+        <Setter Property="Foreground" Value="#34485e"/>
+        <Setter Property="FontSize" Value="15"/>
+        <Setter Property="FontWeight" Value="Bold"/>
+        <Setter Property="Padding" Value="10"/>
+
+        <Setter Property="BorderThickness" Value="2"/>
+        <Setter Property="HorizontalOffset" Value="5"/>
+        <Setter Property="VerticalOffset" Value="5"/>
     </Style>
 
 </ResourceDictionary>

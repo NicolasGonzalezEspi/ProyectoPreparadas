@@ -2,7 +2,8 @@
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:av="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="av" x:Class="trabajoFinalInterfaces.Modificar"
-      Title="Modificar">
+     
+    Title="Modificar" >
 
     <Page.Resources>
         <ResourceDictionary>
@@ -14,10 +15,10 @@
     </Page.Resources>
     <Grid Background="#34485e" >
 
-        <TextBlock Text="Importar Marketplace" 
+        <TextBlock Text="Importar MKP" 
                    FontSize="20" FontWeight="Bold" Foreground="White"
                    HorizontalAlignment="Left" VerticalAlignment="Top"
-                   Margin="10,10,0,0"/>
+                   Margin="20,10,0,0"/>
 
 
 
@@ -28,13 +29,13 @@
                  Margin="20, 65, 20, 20">
 
             <DataGrid.Columns>
-                <DataGridTextColumn Header="user_login" Binding="{Binding userlogin}" Width="*" />
-                <DataGridTextColumn Header="user_email" Binding="{Binding useremail}" Width="*" />
-                <DataGridTextColumn Header="user_nicename" Binding="{Binding usernicename}" Width="*" />
-                <DataGridTextColumn Header="first_name" Binding="{Binding firstname}" Width="*" />
-                <DataGridTextColumn Header="last_name" Binding="{Binding lastname}" Width="*" />
-                <DataGridTextColumn Header="telefono" Binding="{Binding telefono}" Width="*" />
-                <DataGridTextColumn Header="account_funds" Binding="{Binding accountfunds}" Width="*" />
+                <DataGridTextColumn Header="user_login" Binding="{Binding user_login}" Width="*" />
+                <DataGridTextColumn Header="user_email" Binding="{Binding user_email}" Width="*" />
+                <DataGridTextColumn Header="user_nicename" Binding="{Binding user_nicename}" Width="*" />
+                <DataGridTextColumn Header="first_name" Binding="{Binding first_name}" Width="*" />
+                <DataGridTextColumn Header="last_name" Binding="{Binding last_name}" Width="*" />
+                <DataGridTextColumn Header="telefono" Binding="{Binding Teléfono}" Width="*" />
+                <DataGridTextColumn Header="account_funds" Binding="{Binding account_funds}" Width="*" />
             </DataGrid.Columns>
         </DataGrid>
 
@@ -42,35 +43,26 @@
                FontSize="16" Foreground="White"
                HorizontalAlignment="Left" Margin="98,39,0,0"
                VerticalAlignment="Top" Visibility="Collapsed"/>
-        <Button Content="Preparar archivos" Style="{StaticResource PageButtonStyle2}" FontSize="16.3" HorizontalAlignment="Left"  Margin="246,21,0,0" VerticalAlignment="Top" Click="Button_Click" Height="30" Width="150" ToolTip="Volcar 100 registros de la tabla a un CSV. Si hay 199 o menos se volcarán todos los restantes."/>
-        <TextBlock x:Name="txtTotalRegistros" Foreground="White"  FontSize="36" 
-    HorizontalAlignment="Left" Margin="701,7,0,0" 
-    TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="80">
-            <TextBlock.ToolTip>
-                <ToolTip Content="El número de registros que quedan por preparar."/>
-            </TextBlock.ToolTip>
-        </TextBlock>
-
+        <Button Content="3A. Preparar archivos" Style="{StaticResource PageButtonStyle2}" FontSize="16.3" HorizontalAlignment="Left"  Margin="235,21,0,0" VerticalAlignment="Top" Click="Button_Click" Height="30" Width="161" ToolTip="Volcar 100 registros de la tabla a un CSV. Si hay 199 o menos se volcarán todos los restantes."/>
         <TextBlock Text="Total registros:" 
-    FontSize="18" Foreground="White"
-    HorizontalAlignment="Left" Margin="581,26,0,0"
-    VerticalAlignment="Top">
-            <TextBlock.ToolTip>
-                <ToolTip Content="El número muestra el número de registros que quedan por preparar. Se irán volcando datos en bloques de 100-200 usuarias. "/>
-            </TextBlock.ToolTip>
-        </TextBlock>
+   FontSize="18" Foreground="White"
+            HorizontalAlignment="Left" Margin="647,27,0,0"
+            VerticalAlignment="Top" Width="149"/>
+        <TextBlock x:Name="txtTotalRegistros" Foreground="White"  FontSize="36" 
+   HorizontalAlignment="Left"  Margin="771,10,0,0"
+   TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="80"/>
 
 
-        <Button Style="{StaticResource PageButtonStyle1}" Background="LightBlue" Content="Mover Nuevas Convos a BBDD Global"
-            Width="270" Height="30"
+        <Button Style="{StaticResource PageButtonStyle1}" Background="LightBlue" Content="3B. Mover Nuevas Convos a BBDD Global"
+            Width="285" Height="30"
             Foreground="Black"
-            HorizontalAlignment="Left" Margin="1132,21,0,0"
-            VerticalAlignment="Top" Click="BtnBorrar_Click" ToolTip="Todos los datos de Nuevas Convos se volcarán a BBDD Global para su almacenamiento a largo plazo."
+            HorizontalAlignment="Right" Margin="0,21,20,0"
+            VerticalAlignment="Top" Click="BtnBorrar_Click" ToolTip="Todos los datos de Nuevas Convos se volcarán a BBDD Global para posterior consulta."
                />
         <TextBlock Text="Fin del Proceso:" 
             FontSize="20" FontWeight="Bold" Foreground="White"
-            HorizontalAlignment="Left" VerticalAlignment="Top"
-            Margin="969,24,0,0"/>
+            HorizontalAlignment="Right" VerticalAlignment="Top"
+            Margin="0,24,308,0"/>
 
 
 
