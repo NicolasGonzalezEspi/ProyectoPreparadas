@@ -180,7 +180,7 @@ Gracias a su estructura modular, interfaz clara y operaciones inteligentes, mejo
 
 ## 🤝 Contribuciones, Agradecimientos y Referencias
 
-- **Desarrollador Principal**: [Tu nombre]
+- **Desarrollador Principal**: Nicolás González Espinosa
 - **Frameworks usados**: .NET WPF, MySQL, SSH
 - **CRM Integrado**: WooCommerce (WordPress)
 - **Inspiración y Casos de Uso**: Equipo de gestión de Preparadas
