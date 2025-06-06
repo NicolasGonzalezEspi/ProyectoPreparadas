@@ -9,6 +9,5 @@
 //------------------------------------------------------------------------------
 
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("img/favicon.ico")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("nicolas-key-ssh")]
 
 

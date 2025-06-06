@@ -24,9 +24,6 @@
 
   <ItemGroup>
     <Content Include="img\favicon.ico" />
-    <Content Include="nicolas-key-ssh">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
   </ItemGroup>
 
   <ItemGroup>
